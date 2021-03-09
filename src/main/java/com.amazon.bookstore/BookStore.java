@@ -17,4 +17,12 @@ public class BookStore {
     public boolean removeBook(Book b){
         return books.remove(b);
     }
+
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(ArrayList<Book> books) {
+        this.books = books;
+    }
 }
