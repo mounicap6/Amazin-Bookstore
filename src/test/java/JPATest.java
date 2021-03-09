@@ -1,4 +1,5 @@
-package com.amazon.bookstore;
+import com.amazon.bookstore.Book;
+import com.amazon.bookstore.BookStore;
 
 import javax.persistence.*;
 import java.util.List;
