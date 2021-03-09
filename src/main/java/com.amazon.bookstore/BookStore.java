@@ -1,11 +1,8 @@
 package com.amazon.bookstore;
 import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 @Entity
 public class BookStore {
@@ -14,7 +11,7 @@ public class BookStore {
 
     private String name;
 
-    ArrayList<Book> books;
+    List<Book> books;
 
     public BookStore(){
         this.books = new ArrayList<Book>();
@@ -29,9 +26,9 @@ public class BookStore {
     public Long getId() { return this.id; }
     public void setId(Long id) { this.id = id; }
 
-    @OneToMany(mappedBy = "bookstore")
-    public ArrayList<Book> getBooks(){ return this.books; }
-    public void setBooks(ArrayList<Book> books){ this.books = books; }
+    @OneToMany(cascade = CascadeType.ALL)
+    public List<Book> getBooks(){ return this.books; }
+    public void setBooks(List<Book> books){ this.books = books; }
 
 
     public boolean addBook(Book b){
