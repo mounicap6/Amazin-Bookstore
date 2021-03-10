@@ -1,89 +1,62 @@
 package com.amazon.bookstore;
 
-import static org.junit.jupiter.api.Assertions.*;
+import junit.framework.TestCase;
 
-class BookTest {
-    Book book;
-    @org.junit.jupiter.api.BeforeEach
-    void setUp() {
-        this.book = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure");
-    }
+public class BookTest extends TestCase {
 
-    @org.junit.jupiter.api.AfterEach
-    void tearDown() {
-    }
+    Book book = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure");
 
-    @org.junit.jupiter.api.Test
-    void getIsbn() {
+    public void testGetIsbn() {
         assertEquals(this.book.getIsbn(), 9780061);
     }
 
-    @org.junit.jupiter.api.Test
-    void setIsbn() {
+    public void testSetIsbn() {
         book.setIsbn(1234567);
         assertEquals(this.book.getIsbn(), 1234567);
     }
 
-    @org.junit.jupiter.api.Test
-    void getTitle() {
+    public void testGetTitle() {
         assertEquals(this.book.getTitle(), "The Alchemist");
     }
 
-    @org.junit.jupiter.api.Test
-    void setTitle() {
+    public void testSetTitle() {
         book.setTitle("Nowhere");
         assertEquals(this.book.getTitle(), "Nowhere");
     }
 
-    @org.junit.jupiter.api.Test
-    void getDescription() {
+    public void testGetDescription() {
         assertEquals(this.book.getDescription(), "pursue your dreams by following what your heart desires");
     }
 
-    @org.junit.jupiter.api.Test
-    void setDescription() {
+    public void testSetDescription() {
         book.setDescription("Going nowhere and trying nothing");
         assertEquals(this.book.getDescription(), "Going nowhere and trying nothing");
     }
 
-    @org.junit.jupiter.api.Test
-    void getAuthor() {
+    public void testGetAuthor() {
         assertEquals(this.book.getAuthor(), "Paulo Coelho");
     }
 
-    @org.junit.jupiter.api.Test
-    void setAuthor() {
+    public void testSetAuthor() {
         book.setAuthor("Lynn");
         assertEquals(this.book.getAuthor(), "Lynn");
     }
 
-    @org.junit.jupiter.api.Test
-    void getPublisher() {
+    public void testGetPublisher() {
         assertEquals(this.book.getPublisher(), "HarperCollins");
     }
 
-    @org.junit.jupiter.api.Test
-    void setPublisher() {
+    public void testSetPublisher() {
         book.setPublisher("Berain");
         assertEquals(this.book.getPublisher(), "Berain");
     }
 
-    @org.junit.jupiter.api.Test
-    void getGenre() {
+    public void testGetGenre() {
         assertEquals(this.book.getGenre(), "Adventure");
     }
 
-    @org.junit.jupiter.api.Test
-    void setGenre() {
+    public void testSetGenre() {
         book.setGenre("Fiction");
         assertEquals(this.book.getGenre(), "Fiction");
-    }
-
-    @org.junit.jupiter.api.Test
-    void getImage() {
-    }
-
-    @org.junit.jupiter.api.Test
-    void setImage() {
     }
 }
