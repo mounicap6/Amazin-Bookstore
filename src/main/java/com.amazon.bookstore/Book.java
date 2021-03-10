@@ -9,7 +9,7 @@ public class Book {
     private Long id;
     private int isbn;
     private String title, description, author, publisher, genre;
-    private BufferedImage image;
+    //private BufferedImage image;
 
     private BookStore bookstore;
 
@@ -32,7 +32,6 @@ public class Book {
     public Long getId() { return this.id; }
     public void setId(Long id) { this.id = id; }
 
-    @ManyToOne
     public BookStore getBookstore(){ return this.bookstore; }
     public void setBookstore(BookStore bookstore){ this.bookstore = bookstore; }
     public void removeBookstore(){this.bookstore = null;}
@@ -85,12 +84,12 @@ public class Book {
         this.genre = genre;
     }
 
-    public BufferedImage getImage() {
+   /* public BufferedImage getImage() {
         return image;
     }
 
     public void setImage(BufferedImage image) {
         this.image = image;
-    }
+    }*/
 
 }
