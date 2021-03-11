@@ -28,7 +28,3 @@ This project is an online web app that allows Bookstore Owners to upload and edi
 * Sara Lamonica is handling the database setup
 
 ## Progress:
-
-## UML Class Diagram:
-
-## Database Schema:
