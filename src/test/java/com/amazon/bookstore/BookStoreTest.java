@@ -1,52 +1,44 @@
 package com.amazon.bookstore;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import junit.framework.TestCase;
 
-class BookStoreTest {
+public class BookStoreTest extends TestCase {
 
     Book book1 = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure");
     BookStore bookStore = new BookStore("Haven");
     List<Book> listBook = new ArrayList<>();
 
-    @Test
-    void getBooks() {
+    public void testGetBooks() {
         listBook.add(book1);
         bookStore.addBook(book1);
         assertEquals(bookStore.getBooks(), listBook);
     }
 
-    @Test
-    void setBooks() {
+    public void testSetBooks() {
         listBook.add(book1);
         bookStore.setBooks(listBook);
         assertEquals(bookStore.getBooks(), listBook);
     }
 
-    @Test
-    void addBook() {
+    public void testAddBook() {
         listBook.add(book1);
         bookStore.addBook(book1);
         assertEquals(bookStore.getBooks(), listBook);
     }
 
-    @Test
-    void getName() {
+    public void testGetName() {
         assertEquals(bookStore.getName(), "Haven");
     }
 
-    @Test
-    void setName() {
+    public void testSetName() {
         bookStore.setName("Carleton");
         assertEquals(bookStore.getName(), "Carleton");
     }
 
-    @Test
-    void removeBook() {
+    public void testRemoveBook() {
         bookStore.addBook(book1);
         bookStore.removeBook(book1);
         assertEquals(bookStore.getBooks(), listBook);
