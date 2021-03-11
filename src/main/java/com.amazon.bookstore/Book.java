@@ -6,12 +6,12 @@ import javax.persistence.*;
 @Entity
 public class Book {
 
+    @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private int isbn;
     private String title, description, author, publisher, genre;
     //private BufferedImage image;
-
-    private BookStore bookstore;
 
     public Book(String title, String author, String publisher, int isbn, String description, String genre){
         this.title = title;
@@ -27,14 +27,9 @@ public class Book {
 
     }
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+
     public Long getId() { return this.id; }
     public void setId(Long id) { this.id = id; }
-
-    public BookStore getBookstore(){ return this.bookstore; }
-    public void setBookstore(BookStore bookstore){ this.bookstore = bookstore; }
-    public void removeBookstore(){this.bookstore = null;}
 
     public int getIsbn() {
         return isbn;

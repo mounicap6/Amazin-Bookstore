@@ -33,15 +33,15 @@ public class JPATest {
         }
 
         for(Book bb: books){
-            bb.setBookstore(bookstore[0]);
+            //bb.setBookstore(bookstore[0]);
             bookstore[0].addBook(bb);
             em.persist(bb);
         }
 
         em.getTransaction().commit();
 
-        Query q1 = em.createQuery("SELECT p FROM com.amazon.bookstore.Book p");
-        Query q2 = em.createQuery("SELECT x FROM com.amazon.bookstore.BookStore x");
+        Query q1 = em.createQuery("SELECT p FROM Book p");
+        Query q2 = em.createQuery("SELECT x FROM BookStore x");
 
         @SuppressWarnings("unchecked")
         List<Book> results = q1.getResultList();
