@@ -17,7 +17,7 @@ public class BookstoreController {
 
         model.addAttribute("bookstore", books);
 
-        return "Bookstore";
+        return "bookstore";
     }
 
 }
