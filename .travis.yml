@@ -1,6 +1,4 @@
 language: java
-jdk:
-  - openjdk13
 deploy:
   provider: heroku
   api_key: $HEROKU_API_KEY
