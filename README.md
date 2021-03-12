@@ -17,8 +17,6 @@ This project is an online web app that allows Bookstore Owners to upload and edi
 
 ---
 
-## Instructions: 
-
 ## Milestones:
 ### Milestone 1 (Early Prototype):
 * Sonia Hassan-Legault is defining classes and drawing UML Diagram
@@ -28,3 +26,8 @@ This project is an online web app that allows Bookstore Owners to upload and edi
 * Sara Lamonica is handling the database setup
 
 ## Progress:
+The Github repository has been connected with Travis CI and Heroku
+The entity classes for the book and bookstore have been created
+The application collects data from the back end to display the result
+
+
