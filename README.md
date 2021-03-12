@@ -37,3 +37,4 @@ Requirement 2: User can browse through the books in the bookstore them based on 
 
 Requirement 3: User can then decide to purchase one or many books by putting them in the Shopping Cart and proceeding to Checkout. Next spring will implement adding to shopping cart and checkout.
 
+Note: All the team members will be working on the backend, frontend and testing of the feature they are working on individually. 
