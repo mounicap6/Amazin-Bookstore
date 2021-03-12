@@ -81,7 +81,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>ModelFolder.Main</mainClass>
+                            <mainClass>com.amazon.bookstore.Application</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
