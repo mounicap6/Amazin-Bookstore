@@ -11,8 +11,8 @@ public class JPATest {
     };
 
     private static Book[] books = new Book[]{
-            new Book("Harry Potter", "JK Rowling", "N/A", 123, "HP", "Fantasy"),
-            new Book("Lord of the Rings", "JRR Tolkien", "N/A", 124, "LOTR", "Fantasy")
+            new Book("Harry Potter", "JK Rowling", "N/A", 123, "HP", "Fantasy", 1),
+            new Book("Lord of the Rings", "JRR Tolkien", "N/A", 124, "LOTR", "Fantasy",2)
     };
 
     public JPATest()
