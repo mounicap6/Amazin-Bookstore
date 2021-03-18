@@ -3,9 +3,14 @@ package com.amazon.bookstore;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 @Controller
 public class BookstoreController {
+
+    @Autowired
+    BookRepo bookRepo;
 
     @GetMapping("/")
     public String index(Model model) {
@@ -18,6 +23,12 @@ public class BookstoreController {
         model.addAttribute("bookstore", books);
 
         return "bookstore";
+    }
+
+    @PostMapping("/")
+    public Book createBook(@RequestBody Book book){
+        Book b = bookRepo.save(book);
+        return b;
     }
 
 }

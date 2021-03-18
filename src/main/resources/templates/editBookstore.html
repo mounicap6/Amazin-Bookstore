@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Bookstore</title>
+</head>
+<body>
+    <h2>Upload Book</h2>
+    <form id="addBook" action="#" method="post" class="container">
+        <label>Title:</label><br>
+        <input type="text" name="title"><br><br>
+        <label>ISBN:</label><br>
+        <input type="text" name="isbn"><br><br>
+        <label>Description:</label><br>
+        <input type="text" name="description"><br><br>
+        <label>Author:</label><br>
+        <input type="text" name="author"><br><br>
+        <label>Publisher:</label><br>
+        <input type="text" name="publisher"><br><br>
+        <label>Genre:</label><br>
+        <input type="text" name="genre"><br><br>
+
+        <input type="submit" value="Add Book" class="button">
+    </form>
+
+    <h2>Books</h2>
+    <div id="booksMessage" class="container">There are currently no books in the bookstore.</div>
+    <table id="books" class="bookTable">
+    </table>
+</body>
+</html>
