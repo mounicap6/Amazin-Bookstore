@@ -9,17 +9,18 @@ public class Book {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
-    private int isbn;
+    private int isbn, quantity;
     private String title, description, author, publisher, genre;
     //private BufferedImage image;
 
-    public Book(String title, String author, String publisher, int isbn, String description, String genre){
+    public Book(String title, String author, String publisher, int isbn, String description, String genre, int quantity){
         this.title = title;
         this.author = author;
         this.publisher = publisher;
         this.isbn = isbn;
         this.description = description;
         this.genre = genre;
+        this.quantity = quantity;
     }
 
     public Book()
@@ -77,6 +78,14 @@ public class Book {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
    /* public BufferedImage getImage() {

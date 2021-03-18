@@ -14,6 +14,7 @@
             <th>ISBN</th>
             <th>Description</th>
             <th>Genre</th>
+            <th>Quantity</th>
         </tr>
         <tr th:each="book : ${bookstore.books}">
             <td th:text="${book.title}"></td>
@@ -22,6 +23,7 @@
             <td th:text="${book.isbn}"></td>
             <td th:text="${book.description}"></td>
             <td th:text="${book.genre}"></td>
+            <td th:text="${book.quantity}"></td>
         </tr>
     </table>
 </body>
