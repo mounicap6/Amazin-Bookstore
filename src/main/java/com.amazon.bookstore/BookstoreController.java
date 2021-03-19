@@ -25,7 +25,13 @@ public class BookstoreController {
         return "bookstore";
     }
 
-    @PostMapping("/")
+    @PostMapping("/editBookstore")
+    public String uploadBookstore(){
+
+        return "editBookstore";
+    }
+
+    @PostMapping("/uploadBook")
     public Book createBook(@RequestBody Book book){
         Book b = bookRepo.save(book);
         return b;

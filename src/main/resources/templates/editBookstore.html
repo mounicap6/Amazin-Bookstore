@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Edit Bookstore</title>
 </head>
 <body>
+
+    <!-- Upload Books-->
     <h2>Upload Book</h2>
-    <form id="addBook" action="#" method="post" class="container">
+    <form id="addBook" th:action="@{/uploadBook}" method="post" class="container">
         <label>Title:</label><br>
         <input type="text" name="title"><br><br>
         <label>ISBN:</label><br>
@@ -23,9 +25,7 @@
         <input type="submit" value="Add Book" class="button">
     </form>
 
-    <h2>Books</h2>
-    <div id="booksMessage" class="container">There are currently no books in the bookstore.</div>
-    <table id="books" class="bookTable">
-    </table>
+    <!-- Edit Books-->
+
 </body>
 </html>
