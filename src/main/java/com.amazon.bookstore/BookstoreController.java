@@ -23,6 +23,17 @@ public class BookstoreController {
         return "bookstore";
     }
 
+    @PostMapping("/bookstore")
+    public String mainpage(Model model) {
+        BookStore books = new BookStore();
+        for(Book b : bookRepo.findAll()){
+            books.addBook(b);
+        }
+        model.addAttribute("bookstore", books);
+
+        return "bookstore";
+    }
+
     @PostMapping("/editBookstore")
     public String uploadBookstore(){
         //functionality here
@@ -32,7 +43,8 @@ public class BookstoreController {
     @PostMapping("/uploadBook")
     public String createBook(Book book){
         bookRepo.save(book);
-        return "bookstore";
+        return "editBookstore";
     }
+
 
 }

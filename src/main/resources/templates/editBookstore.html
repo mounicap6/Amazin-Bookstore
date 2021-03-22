@@ -22,9 +22,11 @@
         <label>Genre:</label><br>
         <input type="text" name="genre"><br><br>
 
-        <input id="addButton" type="submit" value="Add Book" class="button" >
+        <input id="addButton" type="submit" value="Add Book" class="button" ><br><br>
     </form>
-
+    <form th:action="@{/bookstore}" method="post">
+        <button>Return to Bookstore</button>
+    </form>
     <!-- Edit Books-->
 
 </body>
