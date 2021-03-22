@@ -1,5 +1,6 @@
 import com.amazon.bookstore.Book;
 import com.amazon.bookstore.BookStore;
+import com.amazon.bookstore.ShoppingCart;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,6 +14,10 @@ public class JPATest {
     private static Book[] books = new Book[]{
             new Book("Harry Potter", "JK Rowling", "N/A", 123, "HP", "Fantasy", 1),
             new Book("Lord of the Rings", "JRR Tolkien", "N/A", 124, "LOTR", "Fantasy",2)
+    };
+
+    private static ShoppingCart[] shoppingcart = new ShoppingCart[]{
+            new ShoppingCart()
     };
 
     public JPATest()
@@ -32,6 +37,12 @@ public class JPATest {
             em.persist(b);
         }
 
+        for(ShoppingCart s: shoppingcart){
+            Book b = new Book("Harry Potter", "JK Rowling", "N/A", 123, "HP", "Fantasy", 1);
+            s.addBook(b);
+            em.persist(s);
+        }
+
         for(Book bb: books){
             //bb.setBookstore(bookstore[0]);
             bookstore[0].addBook(bb);
@@ -42,12 +53,15 @@ public class JPATest {
 
         Query q1 = em.createQuery("SELECT p FROM Book p");
         Query q2 = em.createQuery("SELECT x FROM BookStore x");
+        Query q3 = em.createQuery("SELECT s FROM ShoppingCart s");
 
         @SuppressWarnings("unchecked")
         List<Book> results = q1.getResultList();
 
         @SuppressWarnings("unchecked")
         List<BookStore> results2 = q2.getResultList();
+
+        List<ShoppingCart> results3 = q3.getResultList();
 
 
         System.out.println("\n   ");
@@ -62,6 +76,13 @@ public class JPATest {
 
         for (BookStore x : results2) {
             System.out.println(x.getName() + " (id=" + x.getId() + ")");
+        }
+
+        System.out.println("\n   ");
+        System.out.println("List of ShoppingCart\n----------------");
+
+        for (ShoppingCart s : results3) {
+            System.out.println(" (id=" + s.getId() + ")");
         }
 
         em.close();
