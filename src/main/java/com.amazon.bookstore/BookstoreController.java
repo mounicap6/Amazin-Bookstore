@@ -14,7 +14,19 @@ public class BookstoreController {
 
     @GetMapping("/")
     public String index(Model model) {
-       BookStore books = new BookStore();
+        Book b1 = new Book("Harry Potter", "JK Rowling", "N/A", 123, "HP", "Fantasy", 1);
+        Book b2 = new Book("Lord of the Rings", "JRR Tolkien", "N/A", 124, "LOTR", "Fantasy", 2);
+        BookStore books = new BookStore();
+        books.addBook(b1);
+        books.addBook(b2);
+
+        model.addAttribute("bookstore", books);
+
+        return "bookstore";
+    }
+    @GetMapping("/")
+    public String index(Model model) {
+        BookStore books = new BookStore();
         for(Book b : bookRepo.findAll()){
             books.addBook(b);
         }

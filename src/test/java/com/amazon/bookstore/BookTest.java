@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 public class BookTest extends TestCase {
 
-    Book book = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure");
+    Book book = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure",3);
 
     public void testGetIsbn() {
         assertEquals(this.book.getIsbn(), 9780061);
@@ -58,5 +58,12 @@ public class BookTest extends TestCase {
     public void testSetGenre() {
         book.setGenre("Fiction");
         assertEquals(this.book.getGenre(), "Fiction");
+    }
+
+    public void testGetQuantity(){ assertEquals(this.book.getQuantity(), 3);}
+
+    public void testSetQuantity(){
+        book.setQuantity(1);
+        assertEquals(this.book.getQuantity(), 1);
     }
 }
