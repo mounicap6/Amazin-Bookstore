@@ -10,11 +10,12 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "books", path = "books")
 public interface BookRepo extends PagingAndSortingRepository<Book, Long>, JpaSpecificationExecutor<Book> {
     Book findById(long id);
-    List<Book> findByIsbn(String isbn);
+    List<Book> findByIsbn(int isbn);
     List<Book> findByTitle(String title);
     List<Book> findByDescription(String description);
     List<Book> findByAuthor(String author);
     List<Book> findByPublisher(String publisher);
     List<Book> findByGenre(String genre);
+    List<Book> findByQuantity(int quantity);
 
 }
