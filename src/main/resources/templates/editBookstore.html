@@ -8,7 +8,7 @@
 
     <!-- Upload Books-->
     <h2>Upload Book</h2>
-    <form id="addBook" th:action="@{/uploadBook}" method="post" class="container">
+    <form id="addBook" name="addBook" th:action="@{/uploadBook}" method="post" class="container">
         <label>Title:</label><br>
         <input type="text" name="title"><br><br>
         <label>ISBN:</label><br>
@@ -22,7 +22,7 @@
         <label>Genre:</label><br>
         <input type="text" name="genre"><br><br>
 
-        <input type="submit" value="Add Book" class="button">
+        <input id="addButton" type="submit" value="Add Book" class="button" >
     </form>
 
     <!-- Edit Books-->
