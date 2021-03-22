@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Edit Bookstore</title>
+    <script  type="text/javascript" src="editBookstore.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
 
@@ -22,8 +24,8 @@
         <label>Genre:</label><br>
         <input type="text" name="genre"><br><br>
         <label>Quantity:</label><br>
-        <select id="quality" form="addBook">
-            <option value="1">1</option>
+        <select id="quality" form="addBook" class="numbers">
+            <!--<option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
@@ -52,7 +54,7 @@
             <option value="27">27</option>
             <option value="28">28</option>
             <option value="29">29</option>
-            <option value="30">30</option>
+            <option value="30">30</option>-->
         </select><br><br>
         <input id="addButton" type="submit" value="Add Book" class="button" ><br><br>
     </form>
