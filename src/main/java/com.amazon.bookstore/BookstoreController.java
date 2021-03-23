@@ -63,8 +63,13 @@ public class BookstoreController {
     }
 
     @PostMapping("/shoppingcart")
-    public String addToCart(Book book)
+    public String addToCart(Book book, Model model)
     {
+        BookStore books = new BookStore();
+        for(Book b : bookRepo.findAll()){
+            books.addBook(b);
+        }
+        model.addAttribute("bookstore", books);
         return "bookstore";
     }
 
