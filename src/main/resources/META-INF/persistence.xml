@@ -4,6 +4,7 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>com.amazon.bookstore.Book</class>
         <class>com.amazon.bookstore.BookStore</class>
+        <class>com.amazon.bookstore.ShoppingCart</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:sample.db" />

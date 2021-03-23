@@ -14,7 +14,7 @@ public class BookStore {
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL)
-    List<Book> books;
+    private List<Book> books;
 
     public BookStore(){
         this.books = new ArrayList<Book>();
