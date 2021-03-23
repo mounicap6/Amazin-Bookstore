@@ -24,8 +24,20 @@
             <td th:text="${book.description}"></td>
             <td th:text="${book.genre}"></td>
             <td th:text="${book.quantity}"></td>
+            <td> <form id="addshoppingcart" action="/shoppingcart"  method="post" >
+                <input type="submit" value="Add To Cart" class="button"/>
+            </form> </td>
         </tr>
     </table>
+
+    <div class="container">
+        <h2>ShoppingCart Contents</h2>
+        <table id="shoppingcart">
+            <tbody id="books">
+            </tbody>
+        </table>
+    </div>
+
     <br><br>
 
     <form th:action="@{/editBookstore}" method="post">

@@ -1,4 +1,9 @@
 package com.amazon.bookstore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.awt.image.BufferedImage;
 import javax.persistence.*;
 
@@ -11,7 +16,10 @@ public class Book {
     private Long id;
     private int isbn, quantity;
     private String title, description, author, publisher, genre;
-    //private BufferedImage image;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "books")
+    private List<ShoppingCart> shoppingCarts;
 
     public Book(String title, String author, String publisher, int isbn, String description, String genre, int quantity){
         this.title = title;
@@ -21,6 +29,7 @@ public class Book {
         this.description = description;
         this.genre = genre;
         this.quantity = quantity;
+        this.shoppingCarts = new ArrayList<ShoppingCart>();
     }
 
     public Book()
@@ -86,6 +95,15 @@ public class Book {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    //Set the shopping cart for this book
+    public List<ShoppingCart> getShoppingCarts(){ return this.shoppingCarts; }
+    public void setShoppingCarts(List<ShoppingCart> shoppingCarts){ this.shoppingCarts = shoppingCarts; }
+    public void addShoppingCart(ShoppingCart shoppingCart){this.shoppingCarts.add(shoppingCart);}
+    public void removeShoppingCart(ShoppingCart shoppingCart){this.shoppingCarts.remove(shoppingCart);}
+    public void removeShoppingCarts(){
+        this.shoppingCarts = new ArrayList<ShoppingCart>();;
     }
 
    /* public BufferedImage getImage() {

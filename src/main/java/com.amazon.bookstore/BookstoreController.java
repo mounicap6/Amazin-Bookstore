@@ -12,8 +12,19 @@ public class BookstoreController {
     @Autowired
     BookRepo bookRepo;
 
-    @GetMapping("/")
-    public String index(Model model) {
+   @GetMapping("/user_homepage")
+    public String userHomepage(Model model) {
+       BookStore books = new BookStore();
+       for(Book b : bookRepo.findAll()){
+           books.addBook(b);
+       }
+       model.addAttribute("bookstore", books);
+
+       return "bookstore";
+    }
+
+    @GetMapping("/owner_homepage")
+    public String ownerHomepage(Model model) {
         BookStore books = new BookStore();
         for(Book b : bookRepo.findAll()){
             books.addBook(b);
@@ -21,6 +32,11 @@ public class BookstoreController {
         model.addAttribute("bookstore", books);
 
         return "bookstore";
+    }
+
+    @GetMapping("/")
+    public String homePage(){
+        return "homepage";
     }
 
     @PostMapping("/bookstore")
