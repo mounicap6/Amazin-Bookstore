@@ -62,5 +62,11 @@ public class BookstoreController {
         return "editBookstore";
     }
 
+    @PostMapping("/shoppingcart")
+    public String addToCart(Book book)
+    {
+        return "bookstore";
+    }
+
 
 }
