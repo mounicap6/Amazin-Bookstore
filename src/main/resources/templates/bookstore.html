@@ -3,6 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Amazon Bookstore</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
     <p> **** Amazon Bookstore **** </p>
@@ -60,8 +61,13 @@
     <br><br>
 
     <form th:action="@{/editBookstore}" method="post">
-        <button>Edit Bookstore</button>
+        <button id="editBookstoreButton">Edit Bookstore</button>
     </form>
+    <script type="text/javascript">
+        if (/user/.test(window.location.href)) {
+            document.getElementById('editBookstoreButton').style.display = 'none';
+        }
+    </script>
 
 </body>
 </html>
