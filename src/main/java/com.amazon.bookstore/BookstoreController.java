@@ -62,5 +62,16 @@ public class BookstoreController {
         return "editBookstore";
     }
 
+    @PostMapping("/shoppingcart")
+    public String addToCart(Book book, Model model)
+    {
+        BookStore books = new BookStore();
+        for(Book b : bookRepo.findAll()){
+            books.addBook(b);
+        }
+        model.addAttribute("bookstore", books);
+        return "bookstore";
+    }
+
 
 }
