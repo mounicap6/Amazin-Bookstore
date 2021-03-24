@@ -1,5 +1,6 @@
 package com.amazon.bookstore;
 
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -60,6 +61,28 @@ public class BookstoreController {
     public String createBook(Book book){
         bookRepo.save(book);
         return "editBookstore";
+    }
+
+    @GetMapping("/{bookId}/editBook")
+    public String showEditBook(Model model, @PathVariable long bookId){
+        Book book = null;
+        try{
+            book = bookRepo.findById(bookId);
+        }
+        catch (ResourceNotFoundException ex){
+            model.addAttribute("error","Book not found");
+        }
+        model.addAttribute("book", book);
+        return "book-edit";
+
+    }
+
+
+    @PostMapping("/{bookId}/editBook")
+    public String editBook(Model model, @PathVariable long bookId, @ModelAttribute("book") Book book){
+        book.setId(bookId);
+        bookRepo.save(book);
+        return String.valueOf(book.getId());
     }
 
     @PostMapping("/shoppingcart")
