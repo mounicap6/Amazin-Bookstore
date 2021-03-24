@@ -16,6 +16,7 @@
             <th>Description</th>
             <th>Genre</th>
             <th>Quantity</th>
+            <th></th>
         </tr>
         <tr th:each="book : ${bookstore.books}">
             <form id="addshoppingcart" action="/shoppingcart"  method="post" >
@@ -27,6 +28,7 @@
             <td th:text="${book.genre}" name="genre"></td>
             <td th:text="${book.quantity}" name="quantity"></td>
             <td> <input type="submit" value="Add To Cart" class="button"/> </td>
+                <td><a th:href="@{/{bookId}/editBook/edit(bookId=${book.id})}"></a></td>
             </form>
         </tr>
     </table>
