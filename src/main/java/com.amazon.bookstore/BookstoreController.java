@@ -65,16 +65,9 @@ public class BookstoreController {
 
     @GetMapping("/{bookId}/editBook")
     public String showEditBook(Model model, @PathVariable long bookId){
-        Book book = null;
-        try{
-            book = bookRepo.findById(bookId);
-        }
-        catch (ResourceNotFoundException ex){
-            model.addAttribute("error","Book not found");
-        }
+        Book book = bookRepo.findById(bookId);
         model.addAttribute("book", book);
         return "book-edit";
-
     }
 
 

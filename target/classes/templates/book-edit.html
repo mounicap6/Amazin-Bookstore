@@ -6,7 +6,7 @@
 </head>
 <body>
 <h2>Edit Book</h2>
-<form id="editBook" name="editBook" th:action="@{/{bookId}/editBook}" method="post" >
+<form id="editBook" name="editBook" th:action="@{//{bookId}/editBook}" method="post" >
     <table border ="0">
         <tr th:if="${book.id}">
             <td>Title:</td>
