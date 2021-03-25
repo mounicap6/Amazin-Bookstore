@@ -64,7 +64,7 @@ public class BookstoreController {
     }
 
 
-    @PostMapping("/editBook/{id}")
+    @PostMapping("/editBook/{isbn}")
     public String editBook(Book book){
         bookRepo.save(book);
         return "book-edit";
