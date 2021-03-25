@@ -9,7 +9,7 @@
 
 <!-- Edit Book-->
 <h2>Edit Book</h2>
-<form id="editBook" name="editBook" th:action="@{/editBook/{id}(id=${book.id}" method="post">
+<form id="editBook" name="editBook" th:action="@{/editBook/{isbn}(isbn=${book.isbn}" method="post">
     <label>Title:</label><br>
     <input type="text" th:field="*{title}" name="title"><br><br>
     <label>ISBN:</label><br>
