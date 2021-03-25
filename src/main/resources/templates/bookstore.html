@@ -28,7 +28,7 @@
             <td th:text="${book.genre}" name="genre"></td>
             <td th:text="${book.quantity}" name="quantity"></td>
             <td> <input type="submit" value="Add To Cart" class="button"/> </td>
-            <td><form th:action="@{/{bookId}/editBook}" method="post">
+            <td><form th:action="@{/book-edit}" method="post">
                 <button id="editBook">Edit</button>
             </form></td>
             </form>

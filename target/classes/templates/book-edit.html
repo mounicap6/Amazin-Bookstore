@@ -2,42 +2,42 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Amazon Bookstore</title>
+    <title>Edit Book</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
+
+<!-- Edit Book-->
 <h2>Edit Book</h2>
-<form id="editBook" name="editBook" th:action="@{//{bookId}/editBook}" method="post" >
-    <table border ="0">
-        <tr th:if="${book.id}">
-            <td>Title:</td>
-            <td><input type="text" th:field="*{title}"></td>
-        </tr>
-        <tr>
-            <td>ISBN:</td>
-            <td><input type="text" th:field="*{isbn}"></td>
-        </tr>
-        <tr>
-            <td>Description:</td>
-            <td><input type="text" th:field="*{description}"></td>
-        </tr>
-        <tr>
-            <td>Author:</td>
-            <td><input type="text" th:field="*{author}"></td>
-        </tr>
-        <tr>
-            <td>Publisher:</td>
-            <td><input type="text" th:field="*{publisher}"></td>
-        </tr>
-        <tr>
-            <td>Genre:</td>
-            <td><input type="text" th:field="*{genre}"></td>
-        </tr>
-        <tr>
-            <td>Quantity:</td>
-            <td><input type="text" th:field="*{quantity}"></td>
-        </tr>
-    </table>
-    <input id="editButton" type="submit" value="Update" class="button"><br><br>
+<form id="editBook" name="editBook" th:action="@{/editBook/{id}(id=${book.id}" method="post">
+    <label>Title:</label><br>
+    <input type="text" th:field="*{title}" name="title"><br><br>
+    <label>ISBN:</label><br>
+    <input type="text" th:field="*{isbn}" name="isbn"><br><br>
+    <label>Description:</label><br>
+    <input type="text" th:field="*{description}" name="description"><br><br>
+    <label>Author:</label><br>
+    <input type="text" th:field="*{author}" name="author"><br><br>
+    <label>Publisher:</label><br>
+    <input type="text" th:field="*{publisher}" name="publisher"><br><br>
+    <label>Genre:</label><br>
+    <input type="text" th:field="*{genre}" name="genre"><br><br>
+    <label>Quantity:</label><br>
+    <select id="quantity" form="editBook" name="quantity" class="numbers">
+        <script type="text/javascript">
+            var select = $(".numbers");
+            for (let i=1;i<=100;i++){
+                select.append($('<option></option>').val(i).html(i));
+            }
+        </script>
+    </select><br><br>
+
+    <input id="addButton" type="submit" value="Add Book" class="button" ><br><br>
 </form>
+
+<form th:action="@{/bookstore}" method="post">
+    <button>Return to Bookstore</button>
+</form>
+
 </body>
 </html>

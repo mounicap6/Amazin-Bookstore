@@ -63,19 +63,11 @@ public class BookstoreController {
         return "editBookstore";
     }
 
-    @GetMapping("/{bookId}/editBook")
-    public String showEditBook(Model model, @PathVariable long bookId){
-        Book book = bookRepo.findById(bookId);
-        model.addAttribute("book", book);
-        return "book-edit";
-    }
 
-
-    @PostMapping("/{bookId}/editBook")
-    public String editBook(Model model, @PathVariable long bookId, @ModelAttribute("book") Book book){
-        book.setId(bookId);
+    @PostMapping("/editBook/{id}")
+    public String editBook(Book book){
         bookRepo.save(book);
-        return String.valueOf(book.getId());
+        return "book-edit";
     }
 
 
