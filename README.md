@@ -23,14 +23,14 @@ This project is an online web app that allows Bookstore Owners to upload and edi
 * Shoana Sharma is integrating Travis CI 
 * Mounica Pillarisetty is implementing Heroku and the display 
 * Lynn Mehyou is responsible for the testing (unit and integration) and the README file
-* Sara Lamonica is handling the database setup
+* Sarah Lamonica is handling the database setup
 
 ### Milestone 2 (Alpha Release):
 * Sonia Hassan-Legault defined roles and establish inventory.
 * Shoana Sharma working on adding the Checkout page
 * Mounica Pillarisetty implemented the book upload for the Owner
 * Lynn Mehyou worked on implementing the edit information of a book
-* Sara Lamonica implemented the shopping cart and the functionality to add a book to the cart
+* Sarah Lamonica implemented the shopping cart and the functionality to add a book to the cart
 
 ## Progress:
 * The Github repository has been connected with Travis CI and Heroku
