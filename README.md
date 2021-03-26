@@ -39,8 +39,8 @@ This project is an online web app that allows Bookstore Owners to upload and edi
 * The application collects data from the back end to display the result
 
 ## Next Week
-Requirement 1: Bookstore Owner can upload and edit Book information (ISBN, picture, description, author, publisher,...) and inventory. We will implement editing book information.
+Requirement 1: We will implement editing book information and adding pricing for each book.
 
-Requirement 2: User can browse through the books in the bookstore them based on the above information. We will implement search and browse.
+Requirement 2: We will implement search and browse for the user.
 
-Requirement 3: User can then decide to purchase one or many books by putting them in the Shopping Cart and proceeding to Checkout. We will implement the checkout process.
+Requirement 3: Users can now add shopping cart so we will implement the checkout process.
