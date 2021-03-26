@@ -63,27 +63,12 @@ public class BookstoreController {
         return "editBookstore";
     }
 
-    @GetMapping("/{bookId}/editBook")
-    public String showEditBook(Model model, @PathVariable long bookId){
-        Book book = null;
-        try{
-            book = bookRepo.findById(bookId);
-        }
-        catch (ResourceNotFoundException ex){
-            model.addAttribute("error","Book not found");
-        }
-        model.addAttribute("book", book);
-        return "book-edit";
-
+    @DeleteMapping("/deleteBook/{isbn}")
+    public String deleteBook(@RequestBody Book book){
+       bookRepo.delete(book);
+       return "bookstore";
     }
 
-
-    @PostMapping("/{bookId}/editBook")
-    public String editBook(Model model, @PathVariable long bookId, @ModelAttribute("book") Book book){
-        book.setId(bookId);
-        bookRepo.save(book);
-        return String.valueOf(book.getId());
-    }
 
     @PostMapping("/shoppingcart")
     public String addToCart(Book book, Model model)

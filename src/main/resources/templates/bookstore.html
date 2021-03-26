@@ -28,6 +28,9 @@
             <td th:text="${book.quantity}" name="quantity"></td>
             <td> <input type="submit" value="Add To Cart" class="button"/> </td>
             </form>
+            <td> <form th:action="@{/delete/{isbn}{isbn=${book.isbn})}" method="delete">
+                <button id="deleteButton">Delete</button>
+            </form></td>
         </tr>
     </table>
 
