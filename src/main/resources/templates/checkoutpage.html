@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Checkout Page</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<p> **** Amazon Bookstore **** </p>
+
+<div class="container">
+    <h2>ShoppingCart Contents</h2>
+    <table id="shoppingcart">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>ISBN</th>
+            <th>Description</th>
+            <th>Genre</th>
+            <th>Quantity</th>
+        </tr>
+
+        <tr th:each="book : ${checkoutpage.shoppingCart}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.publisher}"></td>
+            <td th:text="${book.isbn}"></td>
+            <td th:text="${book.description}"></td>
+            <td th:text="${book.genre}"></td>
+            <td th:text="${book.quantity}"></td>
+
+        </tr>
+
+    </table>
+</div>
+
+<br><br>
+
+    <button id="PurchaseButton">Purchase</button>
+
+<script type="text/javascript">
+    if (/user/.test(window.location.href)) {
+        document.getElementById('editBookstoreButton').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>

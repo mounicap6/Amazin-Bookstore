@@ -31,7 +31,7 @@
         </tr>
     </table>
 
-    <div class="container">
+  <!--  <div class="container">
         <h2>ShoppingCart Contents</h2>
         <table id="shoppingcart">
             <tr>
@@ -56,7 +56,7 @@
             </tr>
 
         </table>
-    </div>
+    </div>-->
 
     <br><br>
 
@@ -68,6 +68,9 @@
             document.getElementById('editBookstoreButton').style.display = 'none';
         }
     </script>
+    <form th:action="@{/checkout}" method="post">
+        <button id="checkoutbutton">Checkout</button>
+    </form>
 
 </body>
 </html>

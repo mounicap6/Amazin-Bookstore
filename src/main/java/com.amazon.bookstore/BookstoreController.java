@@ -65,7 +65,7 @@ public class BookstoreController {
         return "editBookstore";
     }
 
-    @PostMapping("/shoppingcart")
+   /* @PostMapping("/shoppingcart")
     public String addToCart(Book book, Model model)
     {
 
@@ -79,7 +79,23 @@ public class BookstoreController {
 
         model.addAttribute("bookstore", books);
         return "bookstore";
-    }
+    }*/
 
+    @PostMapping("/checkout")
+    public String checkout(Book book, Model model) {
+
+        ArrayList<Book> cartContents = new ArrayList<Book>();
+        BookStore books = new BookStore();
+        books.setShoppingCart(cartContents);
+        books.addToCart(book);
+        for(Book b : bookRepo.findAll()){
+            books.addBook(b);
+        }
+
+        model.addAttribute("checkoutpage", books);
+        return "checkoutpage";
+
+
+    }
 
 }

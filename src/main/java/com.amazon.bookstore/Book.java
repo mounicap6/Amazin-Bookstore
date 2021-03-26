@@ -106,6 +106,7 @@ public class Book {
         this.shoppingCarts = new ArrayList<ShoppingCart>();;
     }
 
+    public void updateQuantity(int quantity){this.quantity = quantity - 1;}
    /* public BufferedImage getImage() {
         return image;
     }
