@@ -33,10 +33,10 @@ This project is an online web app that allows Bookstore Owners to upload and edi
 * Sara Lamonica implemented the shopping cart and the functionality to add a book to the cart
 
 ## Progress:
-The Github repository has been connected with Travis CI and Heroku
-The entity classes for the book and bookstore have been created
-The shopping cart has been added and books can now be added to the cart
-The application collects data from the back end to display the result
+* The Github repository has been connected with Travis CI and Heroku
+* The entity classes for the book and bookstore have been created
+* The shopping cart has been added and books can now be added to the cart
+* The application collects data from the back end to display the result
 
 ## Next Week
 Requirement 1: We will implement uploading, editing and inventory information.
