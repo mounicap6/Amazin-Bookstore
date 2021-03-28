@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
@@ -23,7 +22,7 @@ public class BookstoreController {
        }
        model.addAttribute("bookstore", books);
 
-       return "bookstore";
+       return "userBookstore";
     }
 
     @GetMapping("/owner_homepage")
@@ -34,7 +33,7 @@ public class BookstoreController {
         }
         model.addAttribute("bookstore", books);
 
-        return "bookstore";
+        return "ownerBookstore";
     }
 
     @GetMapping("/")
@@ -50,7 +49,7 @@ public class BookstoreController {
         }
         model.addAttribute("bookstore", books);
 
-        return "bookstore";
+        return "ownerBookstore";
     }
 
     @PostMapping("/editBookstore")
@@ -78,7 +77,7 @@ public class BookstoreController {
         }
 
         model.addAttribute("bookstore", books);
-        return "bookstore";
+        return "userBookstore";
     }
 
 
