@@ -52,12 +52,6 @@ public class BookstoreController {
         return "ownerBookstore";
     }
 
-    @PostMapping("/editBookstore")
-    public String uploadBookstore(){
-        //functionality here
-        return "editBookstore";
-    }
-
     @PostMapping("/uploadBook")
     public String createBook(Book book){
         bookRepo.save(book);
@@ -79,6 +73,5 @@ public class BookstoreController {
         model.addAttribute("bookstore", books);
         return "userBookstore";
     }
-
 
 }
