@@ -5,6 +5,7 @@
         <class>com.amazon.bookstore.Book</class>
         <class>com.amazon.bookstore.BookStore</class>
         <class>com.amazon.bookstore.ShoppingCart</class>
+        <class>com.amazon.bookstore.User</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC" />
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:sample.db" />

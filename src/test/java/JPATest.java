@@ -1,6 +1,7 @@
 import com.amazon.bookstore.Book;
 import com.amazon.bookstore.BookStore;
 import com.amazon.bookstore.ShoppingCart;
+import com.amazon.bookstore.User;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,6 +19,11 @@ public class JPATest {
 
     private static ShoppingCart[] shoppingcart = new ShoppingCart[]{
             new ShoppingCart()
+    };
+
+    private static User[] users = new User[]{
+            new User("George"),
+            new User("Bob")
     };
 
     public JPATest()
@@ -49,11 +55,16 @@ public class JPATest {
             em.persist(bb);
         }
 
+        for(User u: users){
+            em.persist(u);
+        }
+
         em.getTransaction().commit();
 
         Query q1 = em.createQuery("SELECT p FROM Book p");
         Query q2 = em.createQuery("SELECT x FROM BookStore x");
         Query q3 = em.createQuery("SELECT s FROM ShoppingCart s");
+        Query q4 = em.createQuery("SELECT u FROM User u");
 
         @SuppressWarnings("unchecked")
         List<Book> results = q1.getResultList();
@@ -62,6 +73,8 @@ public class JPATest {
         List<BookStore> results2 = q2.getResultList();
 
         List<ShoppingCart> results3 = q3.getResultList();
+
+        List<User> results4 = q4.getResultList();
 
 
         System.out.println("\n   ");
@@ -83,6 +96,13 @@ public class JPATest {
 
         for (ShoppingCart s : results3) {
             System.out.println(" (id=" + s.getId() + ")");
+        }
+
+        System.out.println("\n   ");
+        System.out.println("List of Users\n----------------");
+
+        for (User u : results4) {
+            System.out.println(" (id=" + u.getId() + ")");
         }
 
         em.close();
