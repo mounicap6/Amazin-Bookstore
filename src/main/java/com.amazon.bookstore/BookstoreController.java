@@ -21,7 +21,7 @@ public class BookstoreController {
            books.addBook(b);
        }
        model.addAttribute("bookstore", books);
-
+       model.addAttribute("allBooks", books);
        return "userBookstore";
     }
 
@@ -77,6 +77,51 @@ public class BookstoreController {
         }
 
         model.addAttribute("bookstore", books);
+        return "userBookstore";
+    }
+
+    @PostMapping("/search")
+    public String searchForBook(@RequestParam(name="keyword") String keyword,
+                                @RequestParam(name="category") String category, Model model){
+        BookStore searchedBooks = new BookStore();
+        switch(category){
+            case "Title":
+                for(Book b : bookRepo.findByTitle(keyword)){
+                    searchedBooks.addBook(b);
+                }
+                break;
+            case "Author":
+                for(Book b : bookRepo.findByAuthor(keyword)){
+                    searchedBooks.addBook(b);
+                }
+                break;
+            case "Publisher":
+                for(Book b : bookRepo.findByPublisher(keyword)){
+                    searchedBooks.addBook(b);
+                }
+                break;
+
+            case "ISBN":
+                if (!keyword.matches("[0-9]+")) {
+                    break;
+                }
+                int isbn = Integer.parseInt(keyword);
+                for(Book b : bookRepo.findByIsbn(isbn)){
+                    searchedBooks.addBook(b);
+                }
+                break;
+            case "Description":
+                for(Book b : bookRepo.findByDescription(keyword)){
+                    searchedBooks.addBook(b);
+                }
+                break;
+            case "Genre":
+                for(Book b : bookRepo.findByGenre(keyword)){
+                    searchedBooks.addBook(b);
+                }
+                break;
+        }
+        model.addAttribute("bookstore", searchedBooks);
         return "userBookstore";
     }
 

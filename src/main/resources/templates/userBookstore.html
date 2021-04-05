@@ -7,6 +7,24 @@
 </head>
 <body>
 <p> **** Amazon Bookstore **** </p>
+<div class="searchBook">
+    <form th:action="@{/user_homepage}" method="get">
+        <button>Show All Books</button>
+    </form>
+    <br>
+    <form id="search" th:action="@{/search}"  method="post" >
+        <input type="text" placeholder="Search.." name="keyword">
+        <select name="category" form="search">
+            <option value="Title">Title</option>
+            <option value="Author">Author</option>
+            <option value="Publisher">Publisher</option>
+            <option value="ISBN">ISBN</option>
+            <option value="Description">Description</option>
+            <option value="Genre">Genre</option>
+        </select>
+        <button type="submit">Search</button>
+    </form>
+</div>
 <table>
     <tr>
         <th>Title</th>
