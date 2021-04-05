@@ -2,8 +2,10 @@ package com.amazon.bookstore;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import javax.validation.Valid;
 
 import java.util.ArrayList;
 
@@ -59,7 +61,10 @@ public class BookstoreController {
     }
 
     @PostMapping("/uploadBook")
-    public String createBook(Book book){
+    public String createBook(@Valid Book book, BindingResult bindingResult){
+        if (bindingResult.hasErrors()) {
+            return "editBookstore";
+        }
         bookRepo.save(book);
         return "editBookstore";
     }

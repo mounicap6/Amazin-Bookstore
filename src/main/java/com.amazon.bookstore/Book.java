@@ -1,5 +1,6 @@
 package com.amazon.bookstore;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.sun.istack.NotNull;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -14,7 +15,9 @@ public class Book {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     private int isbn, quantity;
+    @NotNull
     private String title, description, author, publisher, genre;
 
     @JsonIgnore

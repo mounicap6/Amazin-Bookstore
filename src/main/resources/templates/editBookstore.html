@@ -1,17 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"> <!--xmlns:th="http://www.thymeleaf.org">-->
 <head>
     <meta charset="UTF-8">
     <title>Edit Bookstore</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/scripts.js" type="text/javascript"></script>
 </head>
 <body>
 
 <!-- Upload Books-->
 <h2>Upload Book</h2>
-<form id="addBook" name="addBook" th:action="@{/uploadBook}" method="post" class="container">
+<form id="addBook" name="addBook" th:action="@{/uploadBook}" th:object="${book}" method="post" class="container">
     <label>Title:</label><br>
-    <input type="text" name="title"><br><br>
+    <input type="text" name="title" th:field="*{title}" >
+    <p th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title Error</p><br><br>
     <label>ISBN:</label><br>
     <input type="text" name="isbn"><br><br>
     <label>Description:</label><br>
@@ -24,12 +26,13 @@
     <input type="text" name="genre"><br><br>
     <label>Quantity:</label><br>
     <select id="quantity" form="addBook" name="quantity" class="numbers">
-        <script type="text/javascript">
+<!--        <script type="text/javascript">
             var select = $(".numbers");
             for (let i=1;i<=100;i++){
                 select.append($('<option></option>').val(i).html(i));
             }
-        </script>
+        </script>-->
+        quantity()
     </select><br><br>
 
     <input id="addButton" type="submit" value="Add Book" class="button" ><br><br>
@@ -38,8 +41,6 @@
 <form th:action="@{/bookstore}" method="post">
     <button>Return to Bookstore</button>
 </form>
-
-<!-- Edit Books-->
 
 </body>
 </html>
