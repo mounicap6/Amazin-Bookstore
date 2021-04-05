@@ -1,5 +1,6 @@
 package com.amazon.bookstore;
 
+import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -55,7 +56,7 @@ public class BookstoreController {
         return "ownerBookstore";
     }
 
-    @PostMapping("/editBookstore")
+     @PostMapping("/editBookstore")
     public String uploadBookstore(){
         //functionality here
         return "editBookstore";
@@ -84,30 +85,73 @@ public class BookstoreController {
     }
 
     @PostMapping("/addOrGetUser")
-    public String addOrGetUser(@RequestParam String name, Model model){
-       if(name.equals("")){
-           return "homepage";
-       } else{
-           User user = userRepo.findByName(name);
-           //Username already exists
-           if(user != null){
+    public String addOrGetUser(@RequestParam String name, Model model) {
+        if (name.equals("")) {
+            return "homepage";
+        } else {
+            User user = userRepo.findByName(name);
+            //Username already exists
+            if (user != null) {
                 //pull info required from current user (shopping cart/purchase history)
-           }
-           //Username doesn't exist so create a new user
-           else{
-               User newUser = new User(name);
-               userRepo.save(newUser);
-           }
+            }
+            //Username doesn't exist so create a new user
+            else {
+                User newUser = new User(name);
+                userRepo.save(newUser);
+            }
 
-           BookStore books = new BookStore();
-           for(Book b : bookRepo.findAll()){
-               books.addBook(b);
-           }
-           model.addAttribute("bookstore", books);
-           return "userBookstore";
-       }
-
+            BookStore books = new BookStore();
+            for (Book b : bookRepo.findAll()) {
+                books.addBook(b);
+            }
+            model.addAttribute("bookstore", books);
+            return "userBookstore";
+        }
     }
 
+    @PostMapping("/search")
+    public String searchForBook(@RequestParam(name="keyword") String keyword,
+                                @RequestParam(name="category") String category, Model model){
+        BookStore searchedBooks = new BookStore();
+        switch(category){
+            case "Title":
+                for(Book b : bookRepo.findByTitle(keyword)){
+                    searchedBooks.addBook(b);
+                }
+                break;
+            case "Author":
+                for(Book b : bookRepo.findByAuthor(keyword)){
+                    searchedBooks.addBook(b);
+                }
+                break;
+            case "Publisher":
+                for(Book b : bookRepo.findByPublisher(keyword)){
+                    searchedBooks.addBook(b);
+                }
+                break;
+
+            case "ISBN":
+                if (!keyword.matches("[0-9]+")) {
+                    break;
+                }
+                int isbn = Integer.parseInt(keyword);
+                for(Book b : bookRepo.findByIsbn(isbn)){
+                    searchedBooks.addBook(b);
+                }
+                break;
+            case "Description":
+                for(Book b : bookRepo.findByDescription(keyword)){
+                    searchedBooks.addBook(b);
+                }
+                break;
+            case "Genre":
+                for(Book b : bookRepo.findByGenre(keyword)){
+                    searchedBooks.addBook(b);
+                }
+                break;
+        }
+        model.addAttribute("bookstore", searchedBooks);
+        return "userBookstore";
+    }
 
 }
