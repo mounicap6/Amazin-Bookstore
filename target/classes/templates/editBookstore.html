@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Bookstore</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+
+<!-- Upload Books-->
+<h2>Upload Book</h2>
+<form id="addBook" name="addBook" th:action="@{/uploadBook}" method="post" class="container">
+    <label>Title:</label><br>
+    <input type="text" name="title"><br><br>
+    <label>ISBN:</label><br>
+    <input type="text" name="isbn"><br><br>
+    <label>Description:</label><br>
+    <input type="text" name="description"><br><br>
+    <label>Author:</label><br>
+    <input type="text" name="author"><br><br>
+    <label>Publisher:</label><br>
+    <input type="text" name="publisher"><br><br>
+    <label>Genre:</label><br>
+    <input type="text" name="genre"><br><br>
+    <label>Quantity:</label><br>
+    <select id="quantity" form="addBook" name="quantity" class="numbers">
+        <script type="text/javascript">
+            var select = $(".numbers");
+            for (let i=1;i<=100;i++){
+                select.append($('<option></option>').val(i).html(i));
+            }
+        </script>
+    </select><br><br>
+
+    <label>Image:</label><br>
+    <input type = "file" name="fileImage" id="fileImage" accept="image/png, image/jpeg"/>
+    <img id="thumbnail" alt="Book Preview"/>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#fileImage').change(function(){
+                showImageThumbnail(this);
+            });
+        });
+
+        function showImageThumbnail(fileInput){
+            file = fileInput.files[0];
+            reader = new FileReader();
+            reader.onload = function(e){
+                $('#thumbnail').attr('src', e.target.result);
+            };
+            read.readAsDataURL(file);
+        }
+    </script>
+
+    <input id="addButton" type="submit" value="Add Book" class="button" ><br><br>
+</form>
+
+<form th:action="@{/bookstore}" method="post">
+    <button>Return to Bookstore</button>
+</form>
+
+<!-- Edit Books-->
+
+</body>
+</html>
