@@ -4,7 +4,7 @@ import junit.framework.TestCase;
 
 public class BookTest extends TestCase {
 
-    Book book = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure",3);
+    Book book = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure",3, "pic");
 
     public void testGetIsbn() {
         assertEquals(this.book.getIsbn(), 9780061);

@@ -32,6 +32,26 @@
         </script>
     </select><br><br>
 
+    <label>Image:</label><br>
+    <input type = "file" name="fileImage" id="fileImage" accept="image/png, image/jpeg"/>
+    <img id="thumbnail" alt="Book Preview"/>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#fileImage').change(function(){
+                showImageThumbnail(this);
+            });
+        });
+
+        function showImageThumbnail(fileInput){
+            file = fileInput.files[0];
+            reader = new FileReader();
+            reader.onload = function(e){
+                $('#thumbnail').attr('src', e.target.result);
+            };
+            read.readAsDataURL(file);
+        }
+    </script>
+
     <input id="addButton" type="submit" value="Add Book" class="button" ><br><br>
 </form>
 

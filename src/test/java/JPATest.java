@@ -1,4 +1,4 @@
-import com.amazon.bookstore.Book;
+/**import com.amazon.bookstore.Book;
 import com.amazon.bookstore.BookStore;
 import com.amazon.bookstore.ShoppingCart;
 
@@ -12,8 +12,8 @@ public class JPATest {
     };
 
     private static Book[] books = new Book[]{
-            new Book("Harry Potter", "JK Rowling", "N/A", 123, "HP", "Fantasy", 1),
-            new Book("Lord of the Rings", "JRR Tolkien", "N/A", 124, "LOTR", "Fantasy",2)
+            //new Book("Harry Potter", "JK Rowling", "N/A", 123, "HP", "Fantasy", 1),
+            //new Book("Lord of the Rings", "JRR Tolkien", "N/A", 124, "LOTR", "Fantasy",2)
     };
 
     private static ShoppingCart[] shoppingcart = new ShoppingCart[]{
@@ -40,11 +40,10 @@ public class JPATest {
         for(ShoppingCart s: shoppingcart){
             Book b = new Book("Harry Potter", "JK Rowling", "N/A", 123, "HP", "Fantasy", 1);
             s.addBook(b);
-            em.persist(s);
         }
 
         for(Book bb: books){
-            //bb.setBookstore(bookstore[0]);
+            bb.setBookstore(bookstore[0]);
             bookstore[0].addBook(bb);
             em.persist(bb);
         }
@@ -97,3 +96,4 @@ public class JPATest {
     }
 
 }
+**/

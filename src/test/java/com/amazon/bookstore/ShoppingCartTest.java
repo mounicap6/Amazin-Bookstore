@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ShoppingCartTest extends TestCase  {
 
-    Book book = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure",3);
+    Book book = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure",3 ,"pic");
     BookStore bookStore = new BookStore("Haven");
     List<ShoppingCart> listBook = new ArrayList<ShoppingCart>();
     ShoppingCart shoppingCart = new ShoppingCart();
