@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 @Controller
@@ -57,7 +56,6 @@ public class BookstoreController {
     
      @PostMapping("/editBookstore")
     public String uploadBookstore(){
-        //functionality here
         return "editBookstore";
     }
 
