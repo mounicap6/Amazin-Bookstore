@@ -10,7 +10,7 @@ public class User {
     private String name;
     private static int numberOfUsers=0;
     @Id
-    private int id;
+    private Long id;
     @OneToOne(cascade = CascadeType.ALL)
     private ShoppingCart shoppingCart;
     @ManyToMany(cascade = CascadeType.ALL)
@@ -19,14 +19,14 @@ public class User {
     public User(String name){
         this.name = name;
         numberOfUsers += 1;
-        id = numberOfUsers;
+        id = new Long(numberOfUsers);
         shoppingCart = new ShoppingCart();
         purchasedBooks = new ArrayList<>();
     }
 
     public User() {
         numberOfUsers += 1;
-        id = numberOfUsers;
+        id = new Long(numberOfUsers);
         shoppingCart = new ShoppingCart();
         purchasedBooks = new ArrayList<>();
     }
@@ -47,7 +47,7 @@ public class User {
         User.numberOfUsers = numberOfUsers;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
