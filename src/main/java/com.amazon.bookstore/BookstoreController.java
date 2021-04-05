@@ -110,9 +110,15 @@ public class BookstoreController {
 
     @RequestMapping(value= "/delete/{isbn}", method = RequestMethod.GET)
     public String deleteBook(@PathVariable("isbn")  int isbn, Model model){
-       Book b = bookRepo.findByIsbn(isbn);
-       bookRepo.delete(b);
-       return "redirect:../ownerBookstore";
+       Book book = bookRepo.findByIsbn(isbn);
+       bookRepo.delete(book);
+        BookStore books = new BookStore();
+        for(Book b : bookRepo.findAll()){
+            books.addBook(b);
+        }
+        model.addAttribute("bookstore", books);
+
+        return "ownerBookstore";
     }
 
 }
