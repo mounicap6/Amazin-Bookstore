@@ -17,5 +17,5 @@ public interface BookRepo extends PagingAndSortingRepository<Book, Long>, JpaSpe
     List<Book> findByPublisher(String publisher);
     List<Book> findByGenre(String genre);
     List<Book> findByQuantity(int quantity);
-
+    List<Book> findByAvailable(boolean Available);
 }

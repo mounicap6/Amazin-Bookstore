@@ -27,7 +27,7 @@ public class JaccardDistance {
         return (100.00 - Math.round(distance*100.0)/100.0);
     }
 
-    public HashSet<Book> getRecommendations(User user, ArrayList<User> users, Integer range){
+    public HashSet<Book> getRecommendation(User user, ArrayList<User> users, Integer range){
         HashSet<Book> bookRecommendations = new HashSet<Book>();
 
         //TODO:need to get the users purchased books from checkout
