@@ -52,8 +52,8 @@ public class BookstoreController {
 
         return "ownerBookstore";
     }
-
-    @PostMapping("/editBookstore")
+    
+     @PostMapping("/editBookstore")
     public String uploadBookstore(){
         //functionality here
         return "editBookstore";
@@ -101,6 +101,7 @@ public class BookstoreController {
         model.addAttribute("bookstore", books);
         return "userBookstore";
     }
+
 
     @PostMapping("/search")
     public String searchForBook(@RequestParam(name="keyword") String keyword,
