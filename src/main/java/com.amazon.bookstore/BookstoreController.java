@@ -79,7 +79,6 @@ public class BookstoreController {
 
     }
 
-
     @PostMapping("/{bookId}/editBook")
     public String editBook(Model model, @PathVariable long bookId, @ModelAttribute("book") Book book){
         book.setId(bookId);
@@ -146,6 +145,20 @@ public class BookstoreController {
         }
         model.addAttribute("bookstore", searchedBooks);
         return "userBookstore";
+    }
+
+    @RequestMapping(value= "/delete/{isbn}", method = RequestMethod.GET)
+    public String deleteBook(@PathVariable("isbn")  int isbn, Model model){
+        for(Book book : bookRepo.findByIsbn(isbn)) {
+            bookRepo.delete(book);
+        }
+        BookStore books = new BookStore();
+        for(Book b : bookRepo.findAll()){
+            books.addBook(b);
+        }
+        model.addAttribute("bookstore", books);
+
+        return "ownerBookstore";
     }
 
 }
