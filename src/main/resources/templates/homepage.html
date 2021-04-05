@@ -1,14 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<p>Select which type of user you are</p>
+<p>If you are a user, please input your username</p>
+
+<form id="addorgetuser" th:action="@{/addOrGetUser}"  method="post" >
+    <label>Username:</label><br>
+    <input type="text" name="name"><br><br>
+
+    <input id="User" type="submit" value="User" class="button" ><br><br>
+</form>
 
 <button onclick="location.href='/owner_homepage'" type="button">Owner</button>
-<button onclick="location.href='/user_homepage'" type="button">User</button>
 
 </body>
 </html>
