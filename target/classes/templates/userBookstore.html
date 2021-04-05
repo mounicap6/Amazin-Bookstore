@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Amazon Bookstore</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<p> **** Amazon Bookstore **** </p>
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th>ISBN</th>
+        <th>Description</th>
+        <th>Genre</th>
+        <th>Quantity</th>
+    </tr>
+    <tr th:each="book : ${bookstore.books}">
+        <form id="addshoppingcart" th:action="@{/shoppingcart}"  method="post" >
+            <td> <input type="hidden" name="title" th:text="${book.title}" th:value="${book.title}"/> </td>
+            <td><input type="hidden" name="author" th:text="${book.author}" th:value="${book.author}"/> </td>
+            <td><input type="hidden" name="publisher" th:text="${book.publisher}" th:value="${book.publisher}" /></td>
+            <td><input type="hidden" name="isbn" th:text="${book.isbn}" th:value="${book.isbn}"/></td>
+            <td> <input type="hidden" name="description" th:text="${book.description}" th:value="${book.description}"/></td>
+            <td> <input type="hidden" name="genre" th:text="${book.genre}" th:value="${book.genre}"/></td>
+            <td><input type="hidden" name="quantity" th:text="${book.quantity}" th:value="${book.quantity}"/></td>
+            <td> <input type="submit" value="Add To Cart" class="button"/> </td>
+        </form>
+    </tr>
+</table>
+
+<div class="container">
+    <h2>ShoppingCart Contents</h2>
+    <table id="shoppingcart">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>ISBN</th>
+            <th>Description</th>
+            <th>Genre</th>
+            <th>Quantity</th>
+        </tr>
+
+        <tr th:each="book : ${bookstore.shoppingCart}">
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.author}"></td>
+            <td th:text="${book.publisher}"></td>
+            <td th:text="${book.isbn}"></td>
+            <td th:text="${book.description}"></td>
+            <td th:text="${book.genre}"></td>
+            <td th:text="${book.quantity}"></td>
+
+        </tr>
+
+    </table>
+</div>
+</body>
+</html>
