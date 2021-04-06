@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout Page</title>
+</head>
+<body>
+<h1>Checkout</h1><br>
+<table id="checkout">
+    <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th>ISBN</th>
+        <th>Description</th>
+        <th>Genre</th>
+        <th>Quantity</th>
+    </tr>
+
+    <tr th:each="book : ${bookstore.shoppingCart}">
+        <td th:text="${book.title}"></td>
+        <td th:text="${book.author}"></td>
+        <td th:text="${book.publisher}"></td>
+        <td th:text="${book.isbn}"></td>
+        <td th:text="${book.description}"></td>
+        <td th:text="${book.genre}"></td>
+        <td th:text="${book.quantity}"></td>
+
+    </tr>
+
+</table>
+<tr>
+
+    <form method="get" th:action="'/checkout'">
+        <input type ="hidden" name="userName" th:value="${userName}">
+        <!--<input type="submit" value="Go back" />-->
+    </form>
+</tr>
+
+</body>
+</html>

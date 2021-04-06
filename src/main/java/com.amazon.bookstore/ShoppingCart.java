@@ -44,12 +44,4 @@ public class ShoppingCart {
         this.books.remove(book);
     }
 
-
-    public void checkout(ShoppingCart cart){
-        for (Book b: )
-
-
-    }
-
-
 }

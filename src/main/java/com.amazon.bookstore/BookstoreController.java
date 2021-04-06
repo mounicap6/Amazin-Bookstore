@@ -21,21 +21,21 @@ public class BookstoreController {
     @Autowired
     ShoppingCartRepo shoppingRepo;
 
-   @GetMapping("/user_homepage")
+    @GetMapping("/user_homepage")
     public String userHomepage(Model model) {
-       BookStore books = new BookStore();
-       for(Book b : bookRepo.findAll()){
-           books.addBook(b);
-       }
-       model.addAttribute("bookstore", books);
+        BookStore books = new BookStore();
+        for (Book b : bookRepo.findAll()) {
+            books.addBook(b);
+        }
+        model.addAttribute("bookstore", books);
 
-       return "userBookstore";
+        return "userBookstore";
     }
 
     @GetMapping("/owner_homepage")
     public String ownerHomepage(Model model) {
         BookStore books = new BookStore();
-        for(Book b : bookRepo.findAll()){
+        for (Book b : bookRepo.findAll()) {
             books.addBook(b);
         }
         model.addAttribute("bookstore", books);
@@ -44,42 +44,41 @@ public class BookstoreController {
     }
 
     @GetMapping("/")
-    public String homePage(){
+    public String homePage() {
         return "homepage";
     }
 
     @PostMapping("/bookstore")
     public String mainpage(Model model) {
         BookStore books = new BookStore();
-        for(Book b : bookRepo.findAll()){
+        for (Book b : bookRepo.findAll()) {
             books.addBook(b);
         }
         model.addAttribute("bookstore", books);
 
         return "ownerBookstore";
     }
-    
-     @PostMapping("/editBookstore")
-    public String uploadBookstore(){
+
+    @PostMapping("/editBookstore")
+    public String uploadBookstore() {
         //functionality here
         return "editBookstore";
     }
 
     @PostMapping("/uploadBook")
-    public String createBook(Book book){
+    public String createBook(Book book) {
         bookRepo.save(book);
         return "editBookstore";
     }
 
     @PostMapping("/shoppingcart")
-    public String addToCart(Book book, Model model)
-    {
+    public String addToCart(Book book, Model model) {
 
         ArrayList<Book> cartContents = new ArrayList<Book>();
         BookStore books = new BookStore();
         books.setShoppingCart(cartContents);
         books.addToCart(book);
-        for(Book b : bookRepo.findAll()){
+        for (Book b : bookRepo.findAll()) {
             books.addBook(b);
         }
 
@@ -113,22 +112,22 @@ public class BookstoreController {
     }
 
     @PostMapping("/search")
-    public String searchForBook(@RequestParam(name="keyword") String keyword,
-                                @RequestParam(name="category") String category, Model model){
+    public String searchForBook(@RequestParam(name = "keyword") String keyword,
+                                @RequestParam(name = "category") String category, Model model) {
         BookStore searchedBooks = new BookStore();
-        switch(category){
+        switch (category) {
             case "Title":
-                for(Book b : bookRepo.findByTitle(keyword)){
+                for (Book b : bookRepo.findByTitle(keyword)) {
                     searchedBooks.addBook(b);
                 }
                 break;
             case "Author":
-                for(Book b : bookRepo.findByAuthor(keyword)){
+                for (Book b : bookRepo.findByAuthor(keyword)) {
                     searchedBooks.addBook(b);
                 }
                 break;
             case "Publisher":
-                for(Book b : bookRepo.findByPublisher(keyword)){
+                for (Book b : bookRepo.findByPublisher(keyword)) {
                     searchedBooks.addBook(b);
                 }
                 break;
@@ -138,17 +137,17 @@ public class BookstoreController {
                     break;
                 }
                 int isbn = Integer.parseInt(keyword);
-                for(Book b : bookRepo.findByIsbn(isbn)){
+                for (Book b : bookRepo.findByIsbn(isbn)) {
                     searchedBooks.addBook(b);
                 }
                 break;
             case "Description":
-                for(Book b : bookRepo.findByDescription(keyword)){
+                for (Book b : bookRepo.findByDescription(keyword)) {
                     searchedBooks.addBook(b);
                 }
                 break;
             case "Genre":
-                for(Book b : bookRepo.findByGenre(keyword)){
+                for (Book b : bookRepo.findByGenre(keyword)) {
                     searchedBooks.addBook(b);
                 }
                 break;
@@ -157,13 +156,13 @@ public class BookstoreController {
         return "userBookstore";
     }
 
-    @RequestMapping(value= "/delete/{isbn}", method = RequestMethod.GET)
-    public String deleteBook(@PathVariable("isbn")  int isbn, Model model){
-        for(Book book : bookRepo.findByIsbn(isbn)) {
+    @RequestMapping(value = "/delete/{isbn}", method = RequestMethod.GET)
+    public String deleteBook(@PathVariable("isbn") int isbn, Model model) {
+        for (Book book : bookRepo.findByIsbn(isbn)) {
             bookRepo.delete(book);
         }
         BookStore books = new BookStore();
-        for(Book b : bookRepo.findAll()){
+        for (Book b : bookRepo.findAll()) {
             books.addBook(b);
         }
         model.addAttribute("bookstore", books);
@@ -172,15 +171,20 @@ public class BookstoreController {
     }
 
     @PostMapping("/checkout/{name}")
-    public String checkout( @PathVariable ("name") String name, Model model){
+    public String checkout(@PathVariable("name") String name, Model model) {
 
-    User u = userRepo.findByName(name);
-    ShoppingCart cart = shoppingRepo.findByUser(u);
+        User u = userRepo.findByName(name);
+        ShoppingCart cart = shoppingRepo.findByUser(u);
 
-    Set<Book> set = new LinkedHashSet<Book>(u.getPurchasedBooks());
-    set.addAll(getShoppingCart());
+        Set<Book> set = new LinkedHashSet<Book>(u.getPurchasedBooks());
+        set.addAll(u.getShoppingCart().getBooks());
+        u.setPurchasedBooks(new ArrayList<>(set));
 
-
+       // shoppingRepo.clear();
+        userRepo.save(u);
+        model.addAttribute("userName", name);
+        //model.addAttribute(s:"Quantity", quantity);
         model.addAttribute("cart", cart);
         return "checkout";
     }
+}
