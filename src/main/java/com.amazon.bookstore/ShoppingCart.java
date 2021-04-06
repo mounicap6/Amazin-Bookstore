@@ -1,5 +1,7 @@
 package com.amazon.bookstore;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import static javax.persistence.CascadeType.ALL;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +15,8 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class ShoppingCart {
+
+
 
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -41,7 +45,11 @@ public class ShoppingCart {
     }
 
 
+    public void checkout(ShoppingCart cart){
+        for (Book b: )
 
+
+    }
 
 
 }

@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Controller
@@ -16,6 +18,8 @@ public class BookstoreController {
     BookRepo bookRepo;
     @Autowired
     UserRepo userRepo;
+    @Autowired
+    ShoppingCartRepo shoppingRepo;
 
    @GetMapping("/user_homepage")
     public String userHomepage(Model model) {
@@ -167,4 +171,16 @@ public class BookstoreController {
         return "ownerBookstore";
     }
 
-}
+    @PostMapping("/checkout/{name}")
+    public String checkout( @PathVariable ("name") String name, Model model){
+
+    User u = userRepo.findByName(name);
+    ShoppingCart cart = shoppingRepo.findByUser(u);
+
+    Set<Book> set = new LinkedHashSet<Book>(u.getPurchasedBooks());
+    set.addAll(getShoppingCart());
+
+
+        model.addAttribute("cart", cart);
+        return "checkout";
+    }
