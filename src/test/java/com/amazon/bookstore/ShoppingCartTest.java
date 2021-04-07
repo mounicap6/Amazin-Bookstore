@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class ShoppingCartTest {
 
-    Book book = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure",3, "https://upload.wikimedia.org/wikipedia/en/c/c4/TheAlchemist.jpg");
+   /* Book book = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure",3, "https://upload.wikimedia.org/wikipedia/en/c/c4/TheAlchemist.jpg");
     BookStore bookStore = new BookStore("Haven");
     List<ShoppingCart> listBook = new ArrayList<ShoppingCart>();
     ShoppingCart shoppingCart = new ShoppingCart();
@@ -34,6 +34,7 @@ public class ShoppingCartTest {
 
         model.addAttribute("userID", uid);
         model.addAttribute("books", user.getShoppingCart());**/
+    /*
     @Test
     public void testGetBooks() {
         Book book1 = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure",3);
@@ -61,6 +62,8 @@ public class ShoppingCartTest {
         shoppingCart.addBook(book2);
         assertEquals(shoppingCart.getBooks(), user.getShoppingCart());
     }
+
+    */
 
 }
 
