@@ -15,13 +15,13 @@ public class Book {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private int isbn, quantity;
-    private String title, description, author, publisher, genre;
+    private String title, description, author, publisher, genre, picture;
 
     @JsonIgnore
     @ManyToMany(mappedBy = "books")
     private List<ShoppingCart> shoppingCarts;
 
-    public Book(String title, String author, String publisher, int isbn, String description, String genre, int quantity){
+    public Book(String title, String author, String publisher, int isbn, String description, String genre, int quantity, String picture){
         this.title = title;
         this.author = author;
         this.publisher = publisher;
@@ -30,6 +30,7 @@ public class Book {
         this.genre = genre;
         this.quantity = quantity;
         this.shoppingCarts = new ArrayList<ShoppingCart>();
+        this.picture = picture;
     }
 
     public Book()
@@ -106,12 +107,12 @@ public class Book {
         this.shoppingCarts = new ArrayList<ShoppingCart>();;
     }
 
-   /* public BufferedImage getImage() {
-        return image;
+    public String getPicture() {
+        return picture;
     }
 
-    public void setImage(BufferedImage image) {
-        this.image = image;
-    }*/
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
 
 }
