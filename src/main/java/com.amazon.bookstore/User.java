@@ -8,9 +8,9 @@ import java.util.List;
 public class User {
 
     private String name;
-    private static int numberOfUsers=0;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -21,15 +21,11 @@ public class User {
 
     public User(String name){
         this.name = name;
-        numberOfUsers += 1;
-        id = new Long(numberOfUsers);
         shoppingCart = new ArrayList<Book>();
         purchasedBooks = new ArrayList<>();
     }
 
     public User() {
-        numberOfUsers += 1;
-        id = new Long(numberOfUsers);
         shoppingCart = new ArrayList<Book>();
         purchasedBooks = new ArrayList<>();
     }
@@ -40,14 +36,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public static int getNumberOfUsers() {
-        return numberOfUsers;
-    }
-
-    public static void setNumberOfUsers(int numberOfUsers) {
-        User.numberOfUsers = numberOfUsers;
     }
 
     public Long getId() {
