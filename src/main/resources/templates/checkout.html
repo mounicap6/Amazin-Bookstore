@@ -26,6 +26,7 @@
         <td th:text="${book.description}"></td>
         <td th:text="${book.genre}"></td>
         <td th:text="${book.quantity}"></td>
+        <td> <a th:href="${book.picture}"><img th:src="${book.picture}" width="123" height="168" title="Book" alt="Book"></a> </td>
     </tr>
 
     <form th:action="@{/shoppingcart}" method="post">
