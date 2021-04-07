@@ -18,12 +18,10 @@ public class JaccardDistanceTest {
         this.user2 = new User("user2");
         this.user3 = new User("user3");
 
-        this.book1 = new Book("Book1", "Paulo Coelho", "HarperCollins", 97800613, "pursue your dreams by following what your heart desires", "Adventure",3);
-        this.book2 = new Book("Book2", "Paulo Coelho", "HarperCollins", 34534534, "des", "Adventure",3);
-
-        this.book3 = new Book("Book3", "Paulo Coelho", "HarperCollins", 13453456, "descrip", "Adventure",6);
-
-        this.book4 = new Book("Book4", "Paulo Coelho", "HarperCollins", 66956564, "description", "Adventure",4);
+        this.book1 = new Book("Book1", "Paulo Coelho", "HarperCollins", 97800613, "pursue your dreams by following what your heart desires", "Adventure",3,"https://upload.wikimedia.org/wikipedia/en/c/c4/TheAlchemist.jpg");
+        this.book2 = new Book("Book2", "Paulo Coelho", "HarperCollins", 34534534, "des", "Adventure",3,"https://upload.wikimedia.org/wikipedia/en/c/c4/TheAlchemist.jpg");
+        this.book3 = new Book("Book3", "Paulo Coelho", "HarperCollins", 13453456, "descrip", "Adventure",6,"https://upload.wikimedia.org/wikipedia/en/c/c4/TheAlchemist.jpg");
+        this.book4 = new Book("Book4", "Paulo Coelho", "HarperCollins", 66956564, "description", "Adventure",4,"https://upload.wikimedia.org/wikipedia/en/c/c4/TheAlchemist.jpg");
 
 
         ShoppingCart shoppingCart1 = this.user1.getShoppingCart();
@@ -34,7 +32,6 @@ public class JaccardDistanceTest {
         shoppingCart2.addBook(this.book4);
         shoppingCart2.addBook(this.book2);
         shoppingCart2.addBook(this.book3);
-
 
         ShoppingCart shoppingCart3 = this.user3.getShoppingCart();
         shoppingCart3.addBook(this.book1);
