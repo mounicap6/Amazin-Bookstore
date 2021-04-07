@@ -70,7 +70,12 @@ public class BookstoreControllerTest {
 
     @Test
     public void postAddToCart() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.post("/addOrGetUser").param("name", "George")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(view().name("userBookstore"));
         mvc.perform(MockMvcRequestBuilders.post("/shoppingcart")
+                .flashAttr("userID", "George")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(view().name("shoppingcart"));
@@ -107,7 +112,12 @@ public class BookstoreControllerTest {
 
     @Test
     public void postCheckout() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.post("/addOrGetUser").param("name", "George")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(view().name("userBookstore"));
         mvc.perform(MockMvcRequestBuilders.post("/checkout")
+                .flashAttr("userID", "George")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(view().name("checkout"));
