@@ -42,14 +42,6 @@ public class User {
         this.name = name;
     }
 
-    public static int getNumberOfUsers() {
-        return numberOfUsers;
-    }
-
-    public static void setNumberOfUsers(int numberOfUsers) {
-        User.numberOfUsers = numberOfUsers;
-    }
-
     public Long getId() {
         return id;
     }
