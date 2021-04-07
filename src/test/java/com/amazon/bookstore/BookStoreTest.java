@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class BookStoreTest{
 
-    Book book1 = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure", 3);
+    Book book1 = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure", 3, "https://upload.wikimedia.org/wikipedia/en/c/c4/TheAlchemist.jpg");
     BookStore bookStore = new BookStore("Haven");
     List<Book> listBook = new ArrayList<>();
 
