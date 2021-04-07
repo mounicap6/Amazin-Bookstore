@@ -10,6 +10,7 @@ public class JaccardDistanceTest {
 
     private User user1, user2, user3;
     private Book book1, book2, book3, book4;
+    private ShoppingCart shoppingCart;
 
     //runs before every test 
     @Before
@@ -23,10 +24,13 @@ public class JaccardDistanceTest {
         this.book3 = new Book("Book3", "Paulo Coelho", "HarperCollins", 13453456, "descrip", "Adventure",6,"https://upload.wikimedia.org/wikipedia/en/c/c4/TheAlchemist.jpg");
         this.book4 = new Book("Book4", "Paulo Coelho", "HarperCollins", 66956564, "description", "Adventure",4,"https://upload.wikimedia.org/wikipedia/en/c/c4/TheAlchemist.jpg");
 
+        user1.addToCart(book1);
+        shoppingCart.addBook(book1);
+        shoppingCart.getBooks();
 
-        ShoppingCart shoppingCart1 = this.user1.getShoppingCart();
-        shoppingCart1.addBook(this.book1);
-        shoppingCart1.addBook(this.book2);
+        //ShoppingCart shoppingCart1 = this.user1.getShoppingCart();
+       // shoppingCart1.addBook(this.book1);
+        //shoppingCart1.addBook(this.book2);
 
         ShoppingCart shoppingCart2 = this.user2.getShoppingCart();
         shoppingCart2.addBook(this.book4);
