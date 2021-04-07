@@ -73,6 +73,22 @@ public class BookstoreController {
         return "editBookstore";
     }
 
+    @PostMapping("/checkout")
+    public String checkout(@ModelAttribute("userID") String uid,  Model model)
+    {
+        User user = userRepo.findByName(uid);
+
+        //nothing in the cart..
+        if(user.getShoppingCart() == null) {
+            return "userBookstore";
+        }
+
+        model.addAttribute("userID", uid);
+        model.addAttribute("purchase", user.getShoppingCart());
+
+        return "checkout";
+    }
+
     @PostMapping("/shoppingcart")
     public String addToCart(@ModelAttribute("userID") String uid, Book book, Model model) {
 
@@ -94,6 +110,8 @@ public class BookstoreController {
         model.addAttribute("bookstore", books);
         model.addAttribute("userID", uid);
         model.addAttribute("books", user.getShoppingCart());
+
+        userRepo.save(user);
 
         return "userBookstore";
     }

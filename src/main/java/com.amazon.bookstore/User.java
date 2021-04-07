@@ -9,6 +9,7 @@ public class User {
 
     private String name;
     private static int numberOfUsers=0;
+
     @Id
     private Long id;
 

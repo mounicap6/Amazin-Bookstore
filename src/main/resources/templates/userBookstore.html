@@ -10,6 +10,11 @@
 <div class="searchBook">
     <form th:action="@{/user_homepage}" method="get">
         <button>Show All Books</button>
+        <input type ="hidden" name="userID" th:value="${userID}">
+    </form>
+    <form th:action="@{/checkout}" method="post">
+        <button>Checkout</button>
+        <input type ="hidden" name="userID" th:value="${userID}">
     </form>
     <br>
     <form id="search" th:action="@{/search}"  method="post" >
@@ -45,7 +50,7 @@
             <td> <input type="hidden" name="description" th:text="${book.description}" th:value="${book.description}"/></td>
             <td> <input type="hidden" name="genre" th:text="${book.genre}" th:value="${book.genre}"/></td>
             <td><input type="hidden" name="quantity" th:text="${book.quantity}" th:value="${book.quantity}"/></td>
-            <input type ="hidden" name="userID" th:value="${userID}">
+            <td> <input type ="hidden" name="userID" th:value="${userID}"> </td>
             <td> <input type="submit" value="Add To Cart" class="button"/> </td>
         </form>
     </tr>
