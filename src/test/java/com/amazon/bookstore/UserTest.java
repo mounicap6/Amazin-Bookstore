@@ -19,11 +19,6 @@ public class UserTest {
 
 
     @Test
-    public void getId() {
-        assertEquals(4, user.getId());
-    }
-
-    @Test
     public void getName() {
         assert(user.getName().equals("George"));
     }
