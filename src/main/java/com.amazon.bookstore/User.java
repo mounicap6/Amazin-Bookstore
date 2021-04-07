@@ -11,8 +11,10 @@ public class User {
     private static int numberOfUsers=0;
     @Id
     private Long id;
-    @OneToOne(cascade = CascadeType.ALL)
-    private ShoppingCart shoppingCart;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private List<Book> shoppingCart;
+
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Book> purchasedBooks;
 
@@ -20,14 +22,14 @@ public class User {
         this.name = name;
         numberOfUsers += 1;
         id = new Long(numberOfUsers);
-        shoppingCart = new ShoppingCart();
+        shoppingCart = new ArrayList<Book>();
         purchasedBooks = new ArrayList<>();
     }
 
     public User() {
         numberOfUsers += 1;
         id = new Long(numberOfUsers);
-        shoppingCart = new ShoppingCart();
+        shoppingCart = new ArrayList<Book>();
         purchasedBooks = new ArrayList<>();
     }
 
@@ -51,13 +53,15 @@ public class User {
         return id;
     }
 
-    public ShoppingCart getShoppingCart() {
+    public List<Book> getShoppingCart() {
         return shoppingCart;
     }
 
-    public void setShoppingCart(ShoppingCart shoppingCart) {
+    public void setShoppingCart(List<Book> shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
+
+    public void addToCart(Book book){ shoppingCart.add(book);}
 
     public List<Book> getPurchasedBooks() {
         return purchasedBooks;

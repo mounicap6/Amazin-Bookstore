@@ -13,7 +13,7 @@ public class ShoppingCartTest extends TestCase  {
     ShoppingCart shoppingCart = new ShoppingCart();
     List<Book> books = new ArrayList<Book>();
 
-    public void testGetBooks() {
+   /* public void testGetBooks() {
         book.addShoppingCart(shoppingCart);
         listBook.add(shoppingCart);
         assertEquals(book.getShoppingCarts(), listBook);
@@ -37,5 +37,7 @@ public class ShoppingCartTest extends TestCase  {
         shoppingCart.removeBook(book);
         assertEquals(shoppingCart.getBooks(), books);
     }
+    */
+
 }
 

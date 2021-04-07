@@ -14,6 +14,7 @@
     <br>
     <form id="search" th:action="@{/search}"  method="post" >
         <input type="text" placeholder="Search.." name="keyword">
+        <input type ="hidden" name="userID" th:value="${userID}">
         <select name="category" form="search">
             <option value="Title">Title</option>
             <option value="Author">Author</option>
@@ -44,6 +45,7 @@
             <td> <input type="hidden" name="description" th:text="${book.description}" th:value="${book.description}"/></td>
             <td> <input type="hidden" name="genre" th:text="${book.genre}" th:value="${book.genre}"/></td>
             <td><input type="hidden" name="quantity" th:text="${book.quantity}" th:value="${book.quantity}"/></td>
+            <input type ="hidden" name="userID" th:value="${userID}">
             <td> <input type="submit" value="Add To Cart" class="button"/> </td>
         </form>
     </tr>
@@ -62,7 +64,7 @@
             <th>Quantity</th>
         </tr>
 
-        <tr th:each="book : ${bookstore.shoppingCart}">
+        <tr th:each="book : ${books}">
             <td th:text="${book.title}"></td>
             <td th:text="${book.author}"></td>
             <td th:text="${book.publisher}"></td>
