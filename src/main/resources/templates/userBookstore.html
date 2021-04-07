@@ -12,10 +12,7 @@
         <button>Show All Books</button>
         <input type ="hidden" name="userID" th:value="${userID}">
     </form>
-    <form th:action="@{/checkout}" method="post">
-        <button>Checkout</button>
-        <input type ="hidden" name="userID" th:value="${userID}">
-    </form>
+
     <br>
     <form id="search" th:action="@{/search}"  method="post" >
         <input type="text" placeholder="Search.." name="keyword">
@@ -56,31 +53,9 @@
     </tr>
 </table>
 
-<div class="container">
-    <h2>ShoppingCart Contents</h2>
-    <table id="shoppingcart">
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Publisher</th>
-            <th>ISBN</th>
-            <th>Description</th>
-            <th>Genre</th>
-            <th>Quantity</th>
-        </tr>
 
-        <tr th:each="book : ${books}">
-            <td th:text="${book.title}"></td>
-            <td th:text="${book.author}"></td>
-            <td th:text="${book.publisher}"></td>
-            <td th:text="${book.isbn}"></td>
-            <td th:text="${book.description}"></td>
-            <td th:text="${book.genre}"></td>
-            <td th:text="${book.quantity}"></td>
 
-        </tr>
-
-    </table>
+</table>
 </div>
 </body>
 </html>

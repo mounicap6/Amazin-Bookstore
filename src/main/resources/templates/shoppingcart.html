@@ -7,7 +7,7 @@
 </head>
 <body>
 <p> **** Amazon Bookstore **** </p>
-<h2> CHECKOUT PAGE </h2>
+<h2> SHOPPING CART </h2>
 <table>
     <tr>
         <th>Title</th>
@@ -18,7 +18,8 @@
         <th>Genre</th>
         <th>Quantity</th>
     </tr>
-    <tr th:each="book : ${purchase}">
+
+    <tr th:each="book : ${books}">
         <td th:text="${book.title}"></td>
         <td th:text="${book.author}"></td>
         <td th:text="${book.publisher}"></td>
@@ -26,13 +27,13 @@
         <td th:text="${book.description}"></td>
         <td th:text="${book.genre}"></td>
         <td th:text="${book.quantity}"></td>
+
     </tr>
 
-    <form th:action="@{/shoppingcart}" method="post">
-        <button>Go Back</button>
+    <form th:action="@{/checkout}" method="post">
+        <button>Checkout</button>
         <input type ="hidden" name="userID" th:value="${userID}">
     </form>
-
 
 </table>
 </div>

@@ -100,20 +100,17 @@ public class BookstoreController {
             user.setShoppingCart(newCart);
         }
 
-        user.addToCart(book);
-
-        BookStore books = new BookStore();
-        for(Book b : bookRepo.findAll()){
-            books.addBook(b);
+        if(!user.getShoppingCart().contains(book))
+        {
+            user.addToCart(book);
+            userRepo.save(user);
         }
 
-        model.addAttribute("bookstore", books);
         model.addAttribute("userID", uid);
         model.addAttribute("books", user.getShoppingCart());
 
-        userRepo.save(user);
 
-        return "userBookstore";
+        return "shoppingcart";
     }
 
     @PostMapping("/addOrGetUser")
