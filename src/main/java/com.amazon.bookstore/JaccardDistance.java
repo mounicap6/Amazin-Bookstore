@@ -1,18 +1,14 @@
 package com.amazon.bookstore;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class JaccardDistance {
     public Double getDistance(User u1, User u2){
         Double distance = 0.0;
 
-        //TODO:need to get the users purchased books from checkout
-        ArrayList<Book> u1Books = null; //u1.getPurchasedBooks();
-        ArrayList<Book> u2Books = null; // u2.getPurchasedBooks();
+        List<Book> u1Books = u1.getPurchasedBooks();
+        List<Book> u2Books = u2.getPurchasedBooks();
         HashSet<Book> allBooks = new HashSet<Book>();
 
         Set<Book> sharedBooks = u1Books.stream()
@@ -30,8 +26,7 @@ public class JaccardDistance {
     public HashSet<Book> getRecommendation(User user, ArrayList<User> users, Integer range){
         HashSet<Book> bookRecommendations = new HashSet<Book>();
 
-        //TODO:need to get the users purchased books from checkout
-        ArrayList<Book> boughtBooks = null; //= user.getPurchasedBooks();
+        List<Book> boughtBooks = user.getPurchasedBooks();
 
         if (boughtBooks.isEmpty()){
             return bookRecommendations;
@@ -41,7 +36,7 @@ public class JaccardDistance {
 
         //recommend books they haven't bought yet
         for (User closeUser : closeUsers){
-            ArrayList<Book> closeUserPurchasedBooks = null; //TODO:closeUser.getPurchasedBooks();
+            List<Book> closeUserPurchasedBooks = closeUser.getPurchasedBooks();
             for (Book book : closeUserPurchasedBooks){
                 if (!boughtBooks.contains(book)){
                     bookRecommendations.add(book);

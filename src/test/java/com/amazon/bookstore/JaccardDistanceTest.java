@@ -1,7 +1,8 @@
 package com.amazon.bookstore;
 
+import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.junit.Before;
+import org.junit.jupiter.api.Test;
 
 public class JaccardDistanceTest {
 
@@ -12,7 +13,7 @@ public class JaccardDistanceTest {
     private Book book1, book2, book3, book4;
 
     //runs before every test 
-    @Before
+    @Before("")
     public void setUp(){
         this.user1 = new User("user1");
         this.user2 = new User("user2");
@@ -23,20 +24,11 @@ public class JaccardDistanceTest {
         this.book3 = new Book("Book3", "Paulo Coelho", "HarperCollins", 13453456, "descrip", "Adventure",6,"https://upload.wikimedia.org/wikipedia/en/c/c4/TheAlchemist.jpg");
         this.book4 = new Book("Book4", "Paulo Coelho", "HarperCollins", 66956564, "description", "Adventure",4,"https://upload.wikimedia.org/wikipedia/en/c/c4/TheAlchemist.jpg");
 
-       
-        ShoppingCart shoppingCart1 = this.user1.getShoppingCart();
-        shoppingCart1.addBook(this.book1);
-        shoppingCart1.addBook(this.book2);
-
-        ShoppingCart shoppingCart2 = this.user2.getShoppingCart();
-        shoppingCart2.addBook(this.book4);
-        shoppingCart2.addBook(this.book2);
-        shoppingCart2.addBook(this.book3);
-
-        ShoppingCart shoppingCart3 = this.user3.getShoppingCart();
-        shoppingCart3.addBook(this.book1);
-        shoppingCart3.addBook(this.book4);
-
+        this.user1.addToCart(this.book1);
+        this.user1.addToCart(this.book2);
+        this.user2.addToCart(this.book1);
+        this.user3.addToCart(this.book2);
+        this.user3.addToCart(this.book4);
     }
 
 }

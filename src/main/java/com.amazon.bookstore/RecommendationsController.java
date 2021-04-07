@@ -33,7 +33,7 @@ public class RecommendationsController {
         }
 
         recommendedBooks.addAll(jd.getRecommendation(user, userArrayList, 1)); // one recommendation
-        Iterable<Book> availableBooks = bookRepo.findByAvailable(true);
+        Iterable<Book> availableBooks = bookRepo.findAll();
 
         for (Book recommendedBook : recommendedBooks){
             for (Book availableBook : availableBooks){
