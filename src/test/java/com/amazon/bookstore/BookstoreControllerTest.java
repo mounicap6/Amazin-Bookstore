@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -69,10 +70,15 @@ public class BookstoreControllerTest {
 
     @Test
     public void postAddToCart() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.post("/shoppingcart").accept(MediaType.APPLICATION_JSON))
+        mvc.perform(MockMvcRequestBuilders.post("/addOrGetUser").param("name", "George")
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(view().name("userBookstore"));
-
+        mvc.perform(MockMvcRequestBuilders.post("/shoppingcart")
+                .flashAttr("userID", "George")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(view().name("shoppingcart"));
     }
 
     @Test
@@ -97,9 +103,23 @@ public class BookstoreControllerTest {
     @Test
     public void getDeleteBook() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/delete/{isbn}", "123456")
+                .param("Book", "")
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(view().name("ownerBookstore"));
 
+    }
+
+    @Test
+    public void postCheckout() throws Exception {
+        mvc.perform(MockMvcRequestBuilders.post("/addOrGetUser").param("name", "George")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(view().name("userBookstore"));
+        mvc.perform(MockMvcRequestBuilders.post("/checkout")
+                .flashAttr("userID", "George")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(view().name("checkout"));
     }
 }

@@ -16,8 +16,7 @@ public class BookStore {
     @OneToMany(cascade = CascadeType.ALL)
     private List<Book> books;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<Book> shoppingCart;
+
 
     public BookStore(){
         this.books = new ArrayList<Book>();
@@ -35,9 +34,6 @@ public class BookStore {
     public List<Book> getBooks(){ return this.books; }
     public void setBooks(List<Book> books){ this.books = books; }
 
-    public List<Book> getShoppingCart(){ return this.shoppingCart; }
-    public void setShoppingCart(List<Book> shoppingCart){ this.shoppingCart = shoppingCart; }
-    public void addToCart(Book book){ shoppingCart.add(book); }
 
     public boolean addBook(Book b){
         //b.setBookstore(this);
