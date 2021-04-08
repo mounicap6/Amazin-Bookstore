@@ -12,9 +12,9 @@ import javax.persistence.*;
 public class Book {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    private Long id;
-    private int isbn, quantity;
+    //@GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int isbn;
+    private int quantity;
     private String title, description, author, publisher, genre, picture;
 
     @JsonIgnore
@@ -38,9 +38,6 @@ public class Book {
 
     }
 
-
-    public Long getId() { return this.id; }
-    public void setId(Long id) { this.id = id; }
 
     public int getIsbn() {
         return isbn;

@@ -89,6 +89,7 @@ public class BookstoreController {
             user.setPurchasedBooks(purchases);
         }
 
+
         for(Book b: user.getShoppingCart()) {
             user.getPurchasedBooks().add(b);
 
