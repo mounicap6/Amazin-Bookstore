@@ -37,6 +37,7 @@
         <th>Description</th>
         <th>Genre</th>
         <th>Quantity</th>
+        <th>Picture</th>
     </tr>
     <tr th:each="book : ${bookstore.books}">
         <form id="addshoppingcart" th:action="@{/shoppingcart}"  method="post" >
