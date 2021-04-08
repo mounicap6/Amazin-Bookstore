@@ -14,11 +14,9 @@ public class RecommendationsController {
     @Autowired
     private JaccardDistance jd;
 
-    //TODO: might change it to isbn
-
-    @GetMapping("/getBookRecommendations/{id}")
-    public ArrayList<Book> getBookRecommendation(@PathVariable int id) {
-        User user = userRepo.findById(id);
+    @GetMapping("/getBookRecommendations/{name}")
+    public ArrayList<Book> getBookRecommendation(@PathVariable String name) {
+        User user = userRepo.findByName(name);
         HashSet<Book> recommendedBooks = new HashSet<Book>();
         ArrayList<Book> recommendedAndAvailableBooks = new ArrayList<Book>();
 
