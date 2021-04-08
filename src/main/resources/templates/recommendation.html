@@ -2,12 +2,10 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Amazon Bookstore Checkout</title>
+    <title>Book Recommendation</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
-<p> **** Amazon Bookstore **** </p>
-<h2> CHECKOUT PAGE </h2>
 <table>
     <tr>
         <th>Title</th>
@@ -18,7 +16,7 @@
         <th>Genre</th>
         <th>Quantity</th>
     </tr>
-    <tr th:each="book : ${purchase}">
+    <tr th:each="book : ${recommendBook}">
         <td th:text="${book.title}"></td>
         <td th:text="${book.author}"></td>
         <td th:text="${book.publisher}"></td>
@@ -28,19 +26,6 @@
         <td th:text="${book.quantity}"></td>
         <td> <a th:href="${book.picture}"><img th:src="${book.picture}" width="123" height="168" title="Book" alt="Book"></a> </td>
     </tr>
-
-    <form th:action="@{/shoppingcart}" method="post">
-        <button>Go Back</button>
-        <input type ="hidden" name="userID" th:value="${userID}">
-    </form>
-
-    <form th:action="@{/recommendation}" method="post">
-        <button>Show Recommendations</button>
-        <input type ="hidden" name="userID" th:value="${userID}">
-    </form>
-
-
 </table>
-</div>
 </body>
 </html>
