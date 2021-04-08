@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 public class BookTest {
 
-    Book book = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure",3);
+    Book book = new Book("The Alchemist", "Paulo Coelho", "HarperCollins", 9780061, "pursue your dreams by following what your heart desires", "Adventure",3, "https://upload.wikimedia.org/wikipedia/en/c/c4/TheAlchemist.jpg");
 
     @Test
     public void testGetIsbn() {

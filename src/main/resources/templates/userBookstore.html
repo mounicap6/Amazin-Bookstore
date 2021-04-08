@@ -11,10 +11,13 @@
 <div class="searchBook">
     <form th:action="@{/user_homepage}" method="get">
         <button>Show All Books</button>
+        <input type ="hidden" name="userID" th:value="${userID}">
     </form>
+
     <br>
     <form id="search" th:action="@{/search}"  method="post" >
         <input type="text" placeholder="Search.." name="keyword">
+        <input type ="hidden" name="userID" th:value="${userID}">
         <select name="category" form="search">
             <option value="Title">Title</option>
             <option value="Author">Author</option>
@@ -101,36 +104,16 @@
             <td> <input type="hidden" name="description" th:text="${book.description}" th:value="${book.description}"/></td>
             <td> <input type="hidden" name="genre" th:text="${book.genre}" th:value="${book.genre}"/></td>
             <td><input type="hidden" name="quantity" th:text="${book.quantity}" th:value="${book.quantity}"/></td>
+            <td> <a th:href="${book.picture}"><img th:src="${book.picture}" width="123" height="168" title="Book" alt="Book"></a> </td>
+            <td> <input type ="hidden" name="userID" th:value="${userID}"> </td>
             <td> <input type="submit" value="Add To Cart" class="button"/> </td>
         </form>
     </tr>
 </table>
 
-<div class="container">
-    <h2>ShoppingCart Contents</h2>
-    <table id="shoppingcart">
-        <tr>
-            <th>Title</th>
-            <th>Author</th>
-            <th>Publisher</th>
-            <th>ISBN</th>
-            <th>Description</th>
-            <th>Genre</th>
-            <th>Quantity</th>
-        </tr>
 
-        <tr th:each="book : ${bookstore.shoppingCart}">
-            <td th:text="${book.title}"></td>
-            <td th:text="${book.author}"></td>
-            <td th:text="${book.publisher}"></td>
-            <td th:text="${book.isbn}"></td>
-            <td th:text="${book.description}"></td>
-            <td th:text="${book.genre}"></td>
-            <td th:text="${book.quantity}"></td>
 
-        </tr>
-
-    </table>
+</table>
 </div>
 </body>
 </html>
