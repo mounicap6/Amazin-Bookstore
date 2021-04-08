@@ -54,9 +54,46 @@
     </tr>
 </table>
 
+<!--<div class="recommendation">
+    <h2>Book Recommendations</h2>
+    <div id="emptyMessage">No recommendations to show</div>
+    <table id="bookRecommendationTable">
+        <script type="text/javascript">
+            $.ajax({
+                type: "GET",
+                url: "/getBookRecommendations/" + urlParam('customerName'),
+                headers: {
+                    'Accept': 'application/json'
+                },
+                success: function (data) {
+                    if (data.length == 0) {
+                        $('#emptyMessage').show();
+                        $('#bookRecommendationTable').empty();
+                    } else {
+                        $('#emptyMessage').hide();
+                        let bookRecommendationTable = $('#bookRecommendationTable');
+                        books = data;
+                        bookRecommendationTable.empty();
+                        $.each(data, function (indx, book) {
+                            let buttonId = 'add-' + indx;
+                            bookRecommendationTable.append('<tr>' +
+                                '<td>' + book.name + '</td>' +
+                                '<td><button class="button" id="' + buttonId + '" >Add Book to Cart </button></td>' +
+                                '</tr>');
+                            $('#' + buttonId).click(function () {
+                                addBookToCart(indx);
+                            });
+                        })
+                    }
+                },
+                failure: function (err) {
+                    alert("Failed to get book recommendations with err:" + err);
+                }
+            });
+        </script>
+    </table>
+</div>-->
 
 
-</table>
-</div>
 </body>
 </html>
