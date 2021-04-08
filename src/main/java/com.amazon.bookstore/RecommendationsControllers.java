@@ -35,7 +35,7 @@ public class RecommendationsControllers {
             userArrayList.add(u);
         }
 
-        recommendedBooks.addAll(jd.getRecommendation(user, userArrayList, 1)); // one recommendation
+        recommendedBooks.addAll(jd.getRecommendation(user, userArrayList, 4));
         Iterable<Book> availableBooks = bookRepo.findAll();
 
         for (Book recommendedBook : recommendedBooks){
