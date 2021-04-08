@@ -30,7 +30,7 @@
     </form>
 </div>
 <script>
-    function sortTable(n, isbn) {
+    function sortTable(n) {
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         table = document.getElementById("allBooks");
         switching = true;
@@ -87,12 +87,12 @@
 </script>
 <table id="allBooks">
     <tr>
-        <th onclick="sortTable(0,false)">Title</th>
-        <th onclick="sortTable(1,false)">Author</th>
-        <th onclick="sortTable(2,false)">Publisher</th>
-        <th onclick="sortTable(3,true)">ISBN</th>
-        <th onclick="sortTable(4,false)">Description</th>
-        <th onclick="sortTable(5,false)">Genre</th>
+        <th onclick="sortTable(0)">Title</th>
+        <th onclick="sortTable(1)">Author</th>
+        <th onclick="sortTable(2)">Publisher</th>
+        <th onclick="sortTable(3)">ISBN</th>
+        <th onclick="sortTable(4)">Description</th>
+        <th onclick="sortTable(5)">Genre</th>
         <th>Quantity</th>
     </tr>
     <tr th:each="book : ${bookstore.books}">
