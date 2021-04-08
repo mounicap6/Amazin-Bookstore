@@ -92,6 +92,8 @@ public class BookstoreController {
         for(Book b: user.getShoppingCart())
         {
             user.getPurchasedBooks().add(b);
+            int oldInventory = b.getQuantity();
+            b.setQuantity(oldInventory - 1);
         }
 
         userRepo.save(user);
@@ -213,6 +215,9 @@ public class BookstoreController {
 
         return "ownerBookstore";
     }
+
+
+
 
 
 }
