@@ -92,8 +92,13 @@ public class BookstoreController {
         for(Book b: user.getShoppingCart())
         {
             user.getPurchasedBooks().add(b);
-            int oldInventory = b.getQuantity();
-            b.setQuantity(oldInventory - 1);
+            if(b.getQuantity()>=1){
+                int oldInventory = b.getQuantity();
+                b.setQuantity(oldInventory - 1);
+            }
+            else{
+                System.out.println("Not enough books in the inventory");
+            }
         }
 
         userRepo.save(user);
