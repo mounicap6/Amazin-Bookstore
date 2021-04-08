@@ -154,9 +154,10 @@ public class BookstoreController {
     }
 
     @PostMapping("/search")
-    public String searchForBook(@RequestParam(name = "keyword") String keyword,
+    public String searchForBook(@ModelAttribute("userID") String uid, @RequestParam(name = "keyword") String keyword,
                                 @RequestParam(name = "category") String category, Model model) {
 
+        User u = userRepo.findByName(uid);
         BookStore searchedBooks = new BookStore();
         switch (category) {
             case "Title":
@@ -195,6 +196,7 @@ public class BookstoreController {
                 }
                 break;
         }
+        model.addAttribute("userID", uid);
         model.addAttribute("bookstore", searchedBooks);
 
         return "userBookstore";
