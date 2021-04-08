@@ -89,9 +89,9 @@ public class BookstoreController {
             user.setPurchasedBooks(purchases);
         }
 
-        for(Book b: user.getShoppingCart())
-        {
+        for(Book b: user.getShoppingCart()) {
             user.getPurchasedBooks().add(b);
+
             if(b.getQuantity()>=1){
                 int oldInventory = b.getQuantity();
                 b.setQuantity(oldInventory - 1);
@@ -101,9 +101,11 @@ public class BookstoreController {
             }
         }
 
+        user.setShoppingCart(new ArrayList<Book>());
+
         userRepo.save(user);
         model.addAttribute("userID", uid);
-        model.addAttribute("purchase", user.getShoppingCart());
+        model.addAttribute("purchase", user.getPurchasedBooks());
 
         return "checkout";
     }
@@ -161,9 +163,10 @@ public class BookstoreController {
     }
 
     @PostMapping("/search")
-    public String searchForBook(@RequestParam(name = "keyword") String keyword,
+    public String searchForBook(@ModelAttribute("userID") String uid, @RequestParam(name = "keyword") String keyword,
                                 @RequestParam(name = "category") String category, Model model) {
 
+        User u = userRepo.findByName(uid);
         BookStore searchedBooks = new BookStore();
         switch (category) {
             case "Title":
@@ -202,6 +205,7 @@ public class BookstoreController {
                 }
                 break;
         }
+        model.addAttribute("userID", uid);
         model.addAttribute("bookstore", searchedBooks);
 
         return "userBookstore";
@@ -220,9 +224,6 @@ public class BookstoreController {
 
         return "ownerBookstore";
     }
-
-
-
 
 
 }

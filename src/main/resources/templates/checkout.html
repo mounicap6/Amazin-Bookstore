@@ -30,7 +30,7 @@
         <td> <a th:href="${book.picture}"><img th:src="${book.picture}" width="123" height="168" title="Book" alt="Book"></a> </td>
     </tr>
 
-    <form th:action="@{/shoppingcart}" method="post">
+    <form th:action="@{/user_homepage}" method="get">
         <button>Go Back</button>
         <input type ="hidden" name="userID" th:value="${userID}">
     </form>
