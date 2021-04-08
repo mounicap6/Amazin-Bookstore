@@ -16,7 +16,6 @@
         <th>ISBN</th>
         <th>Description</th>
         <th>Genre</th>
-        <th>Quantity</th>
         <th>Picture</th>
     </tr>
 
@@ -27,7 +26,7 @@
         <td th:text="${book.isbn}"></td>
         <td th:text="${book.description}"></td>
         <td th:text="${book.genre}"></td>
-        <td th:text="${book.quantity}"></td>
+        <td th:text="${book.quantity}" hidden></td>
         <td><a th:href="${book.picture}"><img th:src="${book.picture}" width="123" height="168" title="Book" alt="Book"></a> </td>
 
     </tr>

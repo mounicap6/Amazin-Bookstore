@@ -98,20 +98,27 @@
     </tr>
     <tr th:each="book : ${bookstore.books}">
         <form id="addshoppingcart" th:action="@{/shoppingcart}"  method="post" >
-            <td> <input type="hidden" name="title" th:text="${book.title}" th:value="${book.title}"/> </td>
+            <td><input type="hidden" name="title" th:text="${book.title}" th:value="${book.title}"/> </td>
             <td><input type="hidden" name="author" th:text="${book.author}" th:value="${book.author}"/> </td>
             <td><input type="hidden" name="publisher" th:text="${book.publisher}" th:value="${book.publisher}" /></td>
             <td><input type="hidden" name="isbn" th:text="${book.isbn}" th:value="${book.isbn}"/></td>
-            <td> <input type="hidden" name="description" th:text="${book.description}" th:value="${book.description}"/></td>
-            <td> <input type="hidden" name="genre" th:text="${book.genre}" th:value="${book.genre}"/></td>
+            <td><input type="hidden" name="description" th:text="${book.description}" th:value="${book.description}"/></td>
+            <td><input type="hidden" name="genre" th:text="${book.genre}" th:value="${book.genre}"/></td>
             <td><input type="hidden" name="quantity" th:text="${book.quantity}" th:value="${book.quantity}"/></td>
-            <td> <input type="hidden" name="picture" th:value="${book.picture}"> <a th:href="${book.picture}"><img th:src="${book.picture}" width="123" height="168" title="Book" alt="Book"></a> </td>
-            <td> <input type ="hidden" name="userID" th:value="${userID}"> </td>
-            <td> <input type="submit" value="Add To Cart" class="button"/> </td>
+            <td><input type="hidden" name="picture" th:value="${book.picture}"> <a th:href="${book.picture}"><img th:src="${book.picture}" width="123" height="168" title="Book" alt="Book"></a> </td>
+            <td><input type ="hidden" name="userID" th:value="${userID}"> </td>
+            <td><input id="addToCart" type="submit" value="Add To Cart" class="button"/> </td>
         </form>
     </tr>
 </table>
 
+<script type="text/javascript">
+    $("input").each(function() {
+        if($(this).val() == "0") {
+            document.getElementById('addToCart').style.visibility='hidden';
+        }
+    });
+</script>
 
 </body>
 </html>
