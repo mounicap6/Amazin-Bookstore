@@ -4,6 +4,8 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+
 public class JaccardDistanceTest {
 
     @Autowired
@@ -11,6 +13,8 @@ public class JaccardDistanceTest {
 
     private User user1, user2, user3;
     private Book book1, book2, book3, book4;
+    private JaccardDistance jd;
+    HashMap<User,Double> distanceBySimiliarUserMap = new HashMap<User,Double>();
 
     //runs before every test 
     @Before("")
@@ -30,6 +34,21 @@ public class JaccardDistanceTest {
         this.user3.addToCart(this.book2);
         this.user3.addToCart(this.book4);
     }
+    @Test
+    public void testGetDistance(){
 
+    }
+    @Test
+    public void testGetRecommendations(){
+
+    }
+    @Test
+    public void testFindClosestUser(){
+
+    }
+    @Test
+    public void testGetFurthestUser(){
+    //jd.getFurthestUser();
+    }
 }
 
