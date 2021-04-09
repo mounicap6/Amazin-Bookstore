@@ -4,7 +4,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class JaccardDistanceTest {
 
@@ -45,6 +49,16 @@ public class JaccardDistanceTest {
     @Test
     public void testGetRecommendations(){
 
+        ArrayList<User> users = new ArrayList<User>();
+        users.add(this.user2);
+        users.add(this.user3);
+
+        HashSet<Book> expectedRecommendations = new HashSet<Book>();
+        expectedRecommendations.add(this.book3);
+        expectedRecommendations.add(this.book1);
+        expectedRecommendations.add(this.book2);
+
+        assertEquals(jaccardDistance.getRecommendation(user1, users, 2), expectedRecommendations);
     }
 
     @Test
