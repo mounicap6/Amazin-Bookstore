@@ -29,7 +29,7 @@ This project is an online web app that allows Bookstore Owners to upload and edi
 * Sonia Hassan-Legault defined roles and establish inventory.
 * Shoana Sharma working on adding the Checkout page
 * Mounica Pillarisetty implemented the book upload for the Owner
-* Lynn Mehyou worked on implementing the edit information of a book
+* Lynn Mehyou worked on implementing the delete of a book
 * Sarah Lamonica implemented the shopping cart and the functionality to add a book to the cart
 
 ### Milestone 3 (Final Demo):
