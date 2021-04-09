@@ -37,4 +37,4 @@ This project is an online web app that allows Bookstore Owners to upload and edi
 * Shoana Sharma worked on the checkout page and shopping cart functionality
 * Mounica Pillarisetty implemented the book recommendation functionality based on past purchases
 * Lynn Mehyou implemented the inventory functionality and adding a picture to a book
-* Sarah Lamonica worked on the chekout page and adding multiple books to the shopping cart
+* Sarah Lamonica implemented the checkout page, shopping cart functionality and adding multiple books to the shopping cart
