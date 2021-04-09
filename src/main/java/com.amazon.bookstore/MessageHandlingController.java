@@ -11,9 +11,9 @@ import java.util.Date;
 public class MessageHandlingController {
     @MessageMapping("/chat")
     @SendTo("/topic/messages")
-    public OutputMessage send(Message message) throws Exception {
+    public String send(String title) throws Exception {
         String time = new SimpleDateFormat("HH:mm").format(new Date());
-        return new OutputMessage(message.getFrom(), message.getText(), time);
+        return title;
     }
 }
 

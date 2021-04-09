@@ -13,8 +13,8 @@ public class Book {
 
     @Id
     //@GeneratedValue(strategy=GenerationType.IDENTITY)
-    private int isbn;
-    private int quantity;
+    private Integer isbn;
+    private Integer quantity;
     private String title, description, author, publisher, genre, picture;
 
     @JsonIgnore
@@ -33,9 +33,16 @@ public class Book {
         this.picture = picture;
     }
 
+
+
     public Book()
     {
 
+    }
+
+    @Override
+    public String toString(){
+        return "Title of Book: "+this.title;
     }
 
 

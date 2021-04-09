@@ -4,14 +4,38 @@
     <meta charset="UTF-8">
     <title>Edit Bookstore</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script type="text/javascript">
+        var stompClient = null;
+
+        function connect() {
+            var socket = new SockJS('/chat');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function(frame) {
+                console.log('Connected: ' + frame);
+                stompClient.subscribe('/topic/messages', function(messageOutput) {
+                    showMessageOutput(JSON.parse(messageOutput.body));
+                });
+            });
+        }
+        function sendBook() {
+            var x = document.getElementById("bookTitle").value;
+            stompClient.send("/app/chat", {},
+                JSON.stringify({'title':x}));
+        }
+
+        function showMessageOutput(messageOutput) {
+        }
+    </script>
 </head>
-<body>
+<body onload="connect()">
 
 <!-- Upload Books-->
 <h2>Upload Book</h2>
 <form id="addBook" name="addBook" th:action="@{/uploadBook}" method="post" class="container">
     <label>Title:</label><br>
-    <input type="text" name="title"><br><br>
+    <input id="bookTitle" type="text" name="title"><br><br>
     <label>ISBN:</label><br>
     <input type="text" name="isbn"><br><br>
     <label>Description:</label><br>
@@ -54,7 +78,7 @@
     <input type="url" id="picture" name="picture" /><br><br>
 
 
-    <input id="addButton" type="submit" value="Add Book" class="button" ><br><br>
+    <input onclick="sendBook()" id="addButton" type="submit" value="Add Book" class="button" ><br><br>
 </form>
 
 <form th:action="@{/bookstore}" method="post">
