@@ -27,7 +27,7 @@
                 <td> <input type="hidden" name="description" th:text="${book.description}" th:value="${book.description}"/></td>
                 <td> <input type="hidden" name="genre" th:text="${book.genre}" th:value="${book.genre}"/></td>
                 <td><input type="hidden" name="quantity" th:text="${book.quantity}" th:value="${book.quantity}"/></td>
-                <td> <a th:href="${book.picture}"><img th:src="${book.picture}" width="123" height="168" title="Book" alt="Book"></a> </td>
+                <td> <input type="hidden" name="picture" th:value="${book.picture}"><a th:href="${book.picture}"><img th:src="${book.picture}" width="123" height="168" title="Book" alt="Book"></a> </td>
                 <td><a th:href="@{/delete/{isbn}(isbn=${book.isbn})}">Delete</a></td>
             </form>
         </tr>

@@ -59,4 +59,6 @@ public class User {
     public void setPurchasedBooks(ArrayList<Book> purchasedBooks) {
         this.purchasedBooks = purchasedBooks;
     }
+
+
 }
