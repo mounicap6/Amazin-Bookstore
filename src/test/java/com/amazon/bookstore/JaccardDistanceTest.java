@@ -1,6 +1,6 @@
 package com.amazon.bookstore;
 
-import org.aspectj.lang.annotation.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.junit.jupiter.api.Test;
 
@@ -13,12 +13,12 @@ public class JaccardDistanceTest {
 
     private User user1, user2, user3;
     private Book book1, book2, book3, book4;
-    private JaccardDistance jd;
     HashMap<User,Double> distanceBySimiliarUserMap = new HashMap<User,Double>();
 
-    //runs before every test 
-    @Before("")
+    @BeforeEach
     public void setUp(){
+        this.jaccardDistance = new JaccardDistance();
+
         this.user1 = new User("user1");
         this.user2 = new User("user2");
         this.user3 = new User("user3");
@@ -31,24 +31,36 @@ public class JaccardDistanceTest {
         this.user1.addToCart(this.book1);
         this.user1.addToCart(this.book2);
         this.user2.addToCart(this.book1);
+        this.user2.addToCart(this.book2);
         this.user3.addToCart(this.book2);
+        this.user3.addToCart(this.book3);
         this.user3.addToCart(this.book4);
     }
+
     @Test
     public void testGetDistance(){
 
     }
+
     @Test
     public void testGetRecommendations(){
 
     }
+
     @Test
     public void testFindClosestUser(){
 
     }
+
     @Test
     public void testGetFurthestUser(){
-    //jd.getFurthestUser();
+        HashMap<User, Double> distanceBySimiliarCustomerMap = new HashMap<User, Double>();
+
+        distanceBySimiliarCustomerMap.put(this.user1, 75.00);
+        distanceBySimiliarCustomerMap.put(this.user2, 33.33);
+        distanceBySimiliarCustomerMap.put(this.user3, 66.67);
+
+        assert(this.jaccardDistance.getFurthestUser(distanceBySimiliarCustomerMap).equals(this.user1));
     }
 }
 
