@@ -42,31 +42,6 @@ public class JaccardDistanceTest {
     }
 
     @Test
-    public void testGetDistance(){
-
-    }
-
-    @Test
-    public void testGetRecommendations(){
-
-        ArrayList<User> users = new ArrayList<User>();
-        users.add(this.user2);
-        users.add(this.user3);
-
-        HashSet<Book> expectedRecommendations = new HashSet<Book>();
-        expectedRecommendations.add(this.book3);
-        expectedRecommendations.add(this.book1);
-        expectedRecommendations.add(this.book2);
-
-        assertEquals(jaccardDistance.getRecommendation(user1, users, 2), expectedRecommendations);
-    }
-
-    @Test
-    public void testFindClosestUser(){
-
-    }
-
-    @Test
     public void testGetFurthestUser(){
         HashMap<User, Double> distanceBySimiliarCustomerMap = new HashMap<User, Double>();
 
@@ -76,5 +51,21 @@ public class JaccardDistanceTest {
 
         assert(this.jaccardDistance.getFurthestUser(distanceBySimiliarCustomerMap).equals(this.user1));
     }
+
+    @Test
+    public void testFindClosestUser(){
+
+    }
+
+    @Test
+    public void testGetDistance(){
+        assertEquals(jaccardDistance.getDistance(this.user1, this.user1),100.00);
+    }
+
+    @Test
+    public void testGetRecommendations(){
+
+    }
+
 }
 
