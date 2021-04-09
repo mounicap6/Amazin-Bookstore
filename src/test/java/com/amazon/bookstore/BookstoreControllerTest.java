@@ -61,14 +61,6 @@ public class BookstoreControllerTest {
     }
 
     @Test
-    public void postCreateBook() throws Exception {
-        mvc.perform(MockMvcRequestBuilders.post("/uploadBook").accept(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(view().name("editBookstore"));
-
-    }
-
-    @Test
     public void postAddToCart() throws Exception {
         mvc.perform(MockMvcRequestBuilders.post("/addOrGetUser").param("name", "George")
                 .accept(MediaType.APPLICATION_JSON))
