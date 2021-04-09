@@ -63,7 +63,6 @@ public class BookstoreController {
 
     @PostMapping("/editBookstore")
     public String uploadBookstore() {
-        //functionality here
         return "editBookstore";
     }
 
@@ -131,13 +130,11 @@ public class BookstoreController {
         model.addAttribute("userID", uid);
         model.addAttribute("books", user.getShoppingCart());
 
-
         return "shoppingcart";
     }
 
     @PostMapping("/addOrGetUser")
     public String addOrGetUser(@RequestParam String name, Model model) {
-
         User user;
         if (name.equals("")) {
             return "homepage";
@@ -225,6 +222,5 @@ public class BookstoreController {
 
         return "ownerBookstore";
     }
-
 
 }
