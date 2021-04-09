@@ -3,62 +3,19 @@
   <ID>JAVA</ID>
   <OriginalElement>com.amazon.bookstore</OriginalElement>
   <nodes>
-    <node x="295.0" y="1170.0">com.amazon.bookstore.BookRepo</node>
-    <node x="0.0" y="1070.0">com.amazon.bookstore.BookStore</node>
-    <node x="510.5" y="66.0">com.amazon.bookstore.Application</node>
-    <node x="211.12500000000003" y="0.0">com.amazon.bookstore.ShoppingCart</node>
-    <node x="195.45833333333334" y="1528.0">com.amazon.bookstore.BookstoreController</node>
-    <node x="138.12500000000003" y="282.0">com.amazon.bookstore.Book</node>
+    <node x="388.0" y="0.0">com.amazon.bookstore.BookStore</node>
+    <node x="527.0" y="783.0">com.amazon.bookstore.Application</node>
+    <node x="0.0" y="783.0">com.amazon.bookstore.ShoppingCart</node>
+    <node x="630.0" y="0.0">com.amazon.bookstore.BookstoreController</node>
+    <node x="0.0" y="0.0">com.amazon.bookstore.Book</node>
+    <node x="236.0" y="783.0">com.amazon.bookstore.BookRepo</node>
   </nodes>
   <notes />
-  <edges>
-    <edge source="com.amazon.bookstore.BookstoreController" target="com.amazon.bookstore.BookStore">
-      <point x="-31.75" y="-104.5" />
-      <point x="290.70833333333337" y="1498.0" />
-      <point x="206.25" y="1498.0" />
-      <point x="68.75" y="204.0" />
-    </edge>
-    <edge source="com.amazon.bookstore.BookStore" target="com.amazon.bookstore.Book">
-      <point x="68.75" y="-204.0" />
-      <point x="206.25" y="1045.0" />
-      <point x="277.625" y="1045.0" />
-      <point x="-46.5" y="369.0" />
-    </edge>
-    <edge source="com.amazon.bookstore.ShoppingCart" target="com.amazon.bookstore.Book">
-      <point x="28.25" y="116.0" />
-      <point x="352.375" y="257.0" />
-      <point x="370.625" y="257.0" />
-      <point x="46.5" y="-369.0" />
-    </edge>
-    <edge source="com.amazon.bookstore.Book" target="com.amazon.bookstore.ShoppingCart">
-      <point x="-139.5" y="-369.0" />
-      <point x="184.62500000000003" y="257.0" />
-      <point x="239.37500000000003" y="257.0" />
-      <point x="-84.75" y="116.0" />
-    </edge>
-    <edge source="com.amazon.bookstore.BookstoreController" target="com.amazon.bookstore.BookRepo">
-      <point x="31.75" y="-104.5" />
-      <point x="354.20833333333337" y="1498.0" />
-      <point x="442.0" y="1498.0" />
-      <point x="0.0" y="104.0" />
-    </edge>
-    <edge source="com.amazon.bookstore.BookRepo" target="com.amazon.bookstore.Book">
-      <point x="0.0" y="-104.0" />
-      <point x="442.0" y="1045.0" />
-      <point x="370.625" y="1045.0" />
-      <point x="46.5" y="369.0" />
-    </edge>
-    <edge source="com.amazon.bookstore.BookstoreController" target="com.amazon.bookstore.Book">
-      <point x="95.25" y="-104.5" />
-      <point x="417.70833333333337" y="1508.0" />
-      <point x="599.5" y="1508.0" />
-      <point x="599.5" y="1045.0" />
-      <point x="463.625" y="1045.0" />
-      <point x="139.5" y="369.0" />
-    </edge>
-  </edges>
+  <edges />
   <settings layout="Hierarchic Group" zoom="1.0" x="364.0" y="318.0" />
-  <SelectedNodes />
+  <SelectedNodes>
+    <node>com.amazon.bookstore.BookstoreController</node>
+  </SelectedNodes>
   <Categories>
     <Category>Fields</Category>
     <Category>Constructors</Category>
