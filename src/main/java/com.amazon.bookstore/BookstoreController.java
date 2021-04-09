@@ -89,14 +89,16 @@ public class BookstoreController {
             user.setPurchasedBooks(purchases);
         }
 
-        for(Book b: user.getShoppingCart())
-        {
+        for(Book b: user.getShoppingCart()) {
             user.getPurchasedBooks().add(b);
+
         }
+
+        user.setShoppingCart(new ArrayList<Book>());
 
         userRepo.save(user);
         model.addAttribute("userID", uid);
-        model.addAttribute("purchase", user.getShoppingCart());
+        model.addAttribute("purchase", user.getPurchasedBooks());
 
         return "checkout";
     }
